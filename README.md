@@ -1,20 +1,26 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# ARGUS AI | Elite Sales Closer for Toronto Luxury Real Estate 🏠💼
 
-# Run and deploy your AI Studio app
+**Automate your high-ticket lead qualification with 24/7 localized intelligence.**
 
-This contains everything you need to run your app locally.
+ARGUS is a bespoke AI-powered sales concierge designed for premier Toronto brokerages. Unlike generic chatbots, ARGUS is trained on the specific geography and psychological triggers of the GTA luxury market—from Yorkville suites to Bridle Path estates.
 
-View your app in AI Studio: https://ai.studio/apps/1f40f33d-ef10-4d33-b92e-ffa972e5c372
+## ✨ Core Features (2026 Edition)
+- **High-Net-Worth Qualification:** Automatically identifies buyers vs. sellers and extracts budget, timeline, and location preferences.
+- **GTA Localized Intelligence:** Understands Toronto-specific nuances (e.g., transit impacts, neighborhood prestige, and school districts).
+- **Direct CRM Integration:** Seamlessly bridges lead data to Jobber, ServiceTitan, or Lofty (via Vercel).
+- **Concierge-Grade Voice/Web:** Deployment-ready for both voice-based closing and high-conversion landing pages.
 
-## Run Locally
+## 🛠 Tech Stack
+- **Brain:** [Google AI Studio](https://aistudio.google.com/) (Gemini 1.5 Pro)
+- **Voice Engine:** Retell AI
+- **Frontend:** Next.js / React (Hosted on Vercel)
+- **Design:** Quiet Luxury UI (Tailwind CSS v4)
+- **AEO (AI SEO):** Structured Schema for Generative Search visibility.
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 📂 Project Structure
+```text
+├── app/                # Next.js App Router (Frontend)
+├── components/         # Premium UI Components (Tailwind)
+├── prompts/            # ARGUS System Instructions & Sales Logic
+├── public/             # Optimized Luxury Assets & Media
+└── vercel.json         # Deployment & Header Configurations
