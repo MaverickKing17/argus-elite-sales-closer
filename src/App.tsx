@@ -42,7 +42,13 @@ const Hero = () => {
   const y1 = useTransform(scrollY, [0, 500], [0, -100]);
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden px-6">
+    <motion.section 
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1 }}
+      className="relative h-screen flex items-center justify-center overflow-hidden px-6"
+    >
       <motion.div 
         style={{ y: y1 }}
         className="absolute inset-0 z-0 opacity-20"
@@ -68,7 +74,7 @@ const Hero = () => {
             Qualify $100K+ <br />
             <span className="italic">Commissions</span> While You Sleep.
           </h1>
-          <p className="text-lg md:text-xl font-light max-w-2xl mx-auto mb-12 text-luxury-ink/70 leading-relaxed">
+          <p className="text-lg md:text-xl font-light max-w-2xl mx-auto mb-12 text-luxury-ink leading-relaxed">
             Argus is the first AI sales concierge designed exclusively for Toronto's elite brokerages. 
             Discreet, intelligent, and verified by 20 years of local market data.
           </p>
@@ -83,11 +89,11 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-30">
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-60">
         <div className="w-[1px] h-12 bg-luxury-ink"></div>
         <span className="text-[9px] uppercase tracking-[0.3em]">Scroll</span>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
@@ -103,12 +109,19 @@ const FeatureCard = ({ icon: Icon, title, description, index }: any) => (
       <Icon size={24} strokeWidth={1.5} />
     </div>
     <h3 className="text-2xl font-serif mb-4">{title}</h3>
-    <p className="text-sm text-luxury-ink/60 leading-relaxed">{description}</p>
+    <p className="text-sm text-luxury-ink/90 leading-relaxed">{description}</p>
   </motion.div>
 );
 
 const Intelligence = () => (
-  <section id="intelligence" className="py-32 px-6 bg-luxury-bg">
+  <motion.section 
+    id="intelligence" 
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    className="py-32 px-6 bg-luxury-bg"
+  >
     <div className="max-w-7xl mx-auto">
       <div className="grid md:grid-cols-2 gap-20 items-center mb-32">
         <div>
@@ -116,7 +129,7 @@ const Intelligence = () => (
             Generative Intelligence <br />
             <span className="italic">for the 1%.</span>
           </h2>
-          <p className="text-luxury-ink/70 mb-8 leading-relaxed">
+          <p className="text-luxury-ink mb-8 leading-relaxed">
             Unlike generic SaaS tools, Argus understands the nuance of the Bridle Path, Rosedale, and Forest Hill markets. 
             It doesn't just "chat"—it qualifies leads based on high-net-worth behavioral patterns.
           </p>
@@ -169,15 +182,22 @@ const Intelligence = () => (
         />
       </div>
     </div>
-  </section>
+  </motion.section>
 );
 
 const TrustSection = () => (
-  <section id="trust" className="py-32 px-6 bg-luxury-bg border-t border-black/5">
+  <motion.section 
+    id="trust" 
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 1 }}
+    className="py-32 px-6 bg-luxury-bg border-t border-white/5"
+  >
     <div className="max-w-4xl mx-auto text-center">
       <Award size={48} className="mx-auto mb-8 text-luxury-gold opacity-50" />
       <h2 className="text-4xl font-serif mb-8 italic">"The standard for Toronto's elite."</h2>
-      <p className="text-lg text-luxury-ink/60 mb-12 leading-relaxed">
+      <p className="text-lg text-luxury-ink/90 mb-12 leading-relaxed">
         Built on 20 years of local market intelligence, Argus isn't just technology. 
         It's a digital extension of the heritage and trust that Toronto's top 1% of brokers have built over decades.
       </p>
@@ -187,24 +207,30 @@ const TrustSection = () => (
         <div className="text-xl font-serif tracking-widest">CHESTNUT PARK</div>
       </div>
     </div>
-  </section>
+  </motion.section>
 );
 
 const FAQ = () => (
-  <section className="py-32 px-6 bg-luxury-bg">
+  <motion.section 
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.8 }}
+    className="py-32 px-6 bg-luxury-bg"
+  >
     <div className="max-w-3xl mx-auto">
       <h2 className="text-4xl font-serif mb-16 text-center">Frequently Asked Questions</h2>
       <div className="space-y-12">
         <div>
           <h4 className="text-xl font-serif mb-4">How does Argus handle high-net-worth privacy?</h4>
-          <p className="text-sm text-luxury-ink/60 leading-relaxed">
+          <p className="text-sm text-luxury-ink/80 leading-relaxed">
             Argus operates with bank-grade encryption and a "Discretion-First" protocol. 
             No data is shared with third-party LLMs for training, ensuring your client list remains your most private asset.
           </p>
         </div>
         <div>
           <h4 className="text-xl font-serif mb-4">Is it compatible with Toronto-specific real estate regulations?</h4>
-          <p className="text-sm text-luxury-ink/60 leading-relaxed">
+          <p className="text-sm text-luxury-ink/80 leading-relaxed">
             Yes. Argus is pre-configured with RECO compliance guidelines and Toronto-specific disclosure requirements.
           </p>
         </div>
@@ -236,7 +262,7 @@ const FAQ = () => (
         })}
       </script>
     </div>
-  </section>
+  </motion.section>
 );
 
 const Footer = () => (
@@ -245,7 +271,7 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
         <div className="col-span-1 md:col-span-1">
           <div className="text-3xl font-serif tracking-widest uppercase mb-8">Argus</div>
-          <p className="text-sm text-white/50 leading-relaxed mb-8">
+          <p className="text-sm text-white leading-relaxed mb-8">
             The definitive AI concierge for Toronto's most prestigious real estate brokerages. 
             Discretion, intelligence, and legacy.
           </p>
@@ -263,18 +289,18 @@ const Footer = () => (
         </div>
 
         <div>
-          <h5 className="text-[10px] uppercase tracking-[0.3em] text-luxury-accent mb-8 font-semibold">Intelligence</h5>
-          <ul className="space-y-4 text-sm text-white/60">
-            <li><a href="#" className="hover:text-white transition-colors">Lead Scoring</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Market Analysis</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Concierge AI</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">GEO Optimization</a></li>
+          <h5 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold mb-8 font-semibold">Intelligence</h5>
+          <ul className="space-y-4 text-sm text-white">
+            <li><a href="#" className="hover:text-luxury-gold transition-colors">Lead Scoring</a></li>
+            <li><a href="#" className="hover:text-luxury-gold transition-colors">Market Analysis</a></li>
+            <li><a href="#" className="hover:text-luxury-gold transition-colors">Concierge AI</a></li>
+            <li><a href="#" className="hover:text-luxury-gold transition-colors">GEO Optimization</a></li>
           </ul>
         </div>
 
         <div>
-          <h5 className="text-[10px] uppercase tracking-[0.3em] text-luxury-accent mb-8 font-semibold">Brokerage Hubs</h5>
-          <ul className="space-y-4 text-sm text-white/60">
+          <h5 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold mb-8 font-semibold">Brokerage Hubs</h5>
+          <ul className="space-y-4 text-sm text-white">
             <li className="flex items-center gap-2"><MapPin size={12} /> Yorkville Office</li>
             <li className="flex items-center gap-2"><MapPin size={12} /> Bridle Path Private</li>
             <li className="flex items-center gap-2"><MapPin size={12} /> Forest Hill Intelligence</li>
@@ -283,8 +309,8 @@ const Footer = () => (
         </div>
 
         <div>
-          <h5 className="text-[10px] uppercase tracking-[0.3em] text-luxury-accent mb-8 font-semibold">The Argus Report</h5>
-          <p className="text-xs text-white/40 mb-6 leading-relaxed">
+          <h5 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold mb-8 font-semibold">The Argus Report</h5>
+          <p className="text-xs text-white/70 mb-6 leading-relaxed">
             Subscribe to our quarterly intelligence report on Toronto's HNW behavioral shifts.
           </p>
           <form className="flex gap-2">
@@ -301,17 +327,17 @@ const Footer = () => (
       </div>
 
       <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="flex gap-8 text-[9px] uppercase tracking-[0.2em] text-white/30">
+        <div className="flex gap-8 text-[9px] uppercase tracking-[0.2em] text-white">
           <span>RECO Compliant</span>
           <span>OREA Member</span>
           <span>CREA Verified</span>
         </div>
-        <div className="text-[9px] uppercase tracking-[0.2em] text-white/30">
+        <div className="text-[9px] uppercase tracking-[0.2em] text-white">
           © 2026 Argus Intelligence. All Rights Reserved. Toronto Luxury Real Estate AI.
         </div>
-        <div className="flex gap-8 text-[9px] uppercase tracking-[0.2em] text-white/30">
-          <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+        <div className="flex gap-8 text-[9px] uppercase tracking-[0.2em] text-white">
+          <a href="#" className="hover:text-luxury-gold transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-luxury-gold transition-colors">Terms of Service</a>
         </div>
       </div>
     </div>
@@ -356,7 +382,7 @@ const ChatWidget = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-16 h-16 bg-luxury-ink text-white rounded-full shadow-2xl flex items-center justify-center group relative overflow-hidden"
+        className="w-16 h-16 bg-luxury-gold text-black rounded-full shadow-2xl flex items-center justify-center group relative overflow-hidden"
       >
         <motion.div
           animate={{ rotate: isOpen ? 90 : 0 }}
@@ -364,7 +390,6 @@ const ChatWidget = () => {
         >
           {isOpen ? <X size={24} /> : <MessageSquareText size={24} />}
         </motion.div>
-        <div className="absolute inset-0 bg-luxury-accent opacity-0 group-hover:opacity-20 transition-opacity"></div>
       </motion.button>
 
       <motion.div
@@ -377,15 +402,15 @@ const ChatWidget = () => {
         }}
         className="absolute bottom-24 right-0 w-[380px] h-[500px] glass-card rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-white/20"
       >
-        <div className="p-6 bg-luxury-ink text-white flex justify-between items-center">
+        <div className="p-6 bg-luxury-gold text-black flex justify-between items-center">
           <div>
             <h4 className="font-serif text-lg tracking-wide">Argus Concierge</h4>
             <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></div>
-              <span className="text-[10px] uppercase tracking-widest opacity-60">Private Line Active</span>
+              <div className="w-1.5 h-1.5 bg-black rounded-full animate-pulse"></div>
+              <span className="text-[10px] uppercase tracking-widest opacity-80">Private Line Active</span>
             </div>
           </div>
-          <Award size={20} className="text-luxury-gold opacity-50" />
+          <Award size={20} className="text-black opacity-50" />
         </div>
 
         <div 
