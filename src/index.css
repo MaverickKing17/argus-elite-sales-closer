@@ -5,10 +5,10 @@
   --font-serif: "Cormorant Garamond", serif;
   --font-sans: "Inter", sans-serif;
   
-  --color-luxury-bg: #F5F2ED;
-  --color-luxury-ink: #1A1A1A;
-  --color-luxury-accent: #5A5A40;
-  --color-luxury-gold: #8C7851;
+  --color-luxury-bg: #0A0A0A;
+  --color-luxury-ink: #F5F2ED;
+  --color-luxury-accent: #8C7851;
+  --color-luxury-gold: #D4AF37;
 }
 
 body {
@@ -29,7 +29,7 @@ h1, h2, h3, h4 {
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(26, 26, 26, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
