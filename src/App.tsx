@@ -31,19 +31,29 @@ import { io } from 'socket.io-client';
 const socket = io();
 
 const Navbar = ({ onOpenRequest }: { onOpenRequest: () => void }) => (
-  <nav className="fixed top-0 w-full z-50 px-6 py-8 flex justify-between items-center text-luxury-ink bg-luxury-bg/80 backdrop-blur-md border-b border-luxury-ink/5">
-    <div className="text-2xl font-serif tracking-widest uppercase font-bold">Argus</div>
-    <div className="hidden md:flex gap-12 text-xs uppercase tracking-[0.2em] font-medium">
-      <a href="#philosophy" className="hover:text-luxury-gold transition-colors">Philosophy</a>
-      <a href="#intelligence" className="hover:text-luxury-gold transition-colors">Intelligence</a>
-      <a href="#trust" className="hover:text-luxury-gold transition-colors">Trust</a>
+  <nav className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center text-luxury-ink bg-luxury-bg/90 backdrop-blur-md border-b border-luxury-ink/10">
+    <div className="flex items-center gap-12">
+      <div className="text-2xl font-serif tracking-widest uppercase font-bold">Argus</div>
+      <div className="hidden lg:flex gap-8 text-[10px] uppercase tracking-[0.2em] font-semibold">
+        <a href="#philosophy" className="hover:text-luxury-gold transition-colors">Philosophy</a>
+        <a href="#intelligence" className="hover:text-luxury-gold transition-colors">Intelligence</a>
+        <a href="#trust" className="hover:text-luxury-gold transition-colors">Trust</a>
+      </div>
     </div>
-    <button 
-      onClick={onOpenRequest}
-      className="px-6 py-2 border border-luxury-ink/30 rounded-full text-[10px] uppercase tracking-widest hover:bg-luxury-ink hover:text-luxury-bg transition-all min-h-[48px] min-w-[140px]"
-    >
-      Request Access
-    </button>
+    <div className="flex items-center gap-4">
+      <a 
+        href="/dashboard" 
+        className="hidden md:block text-[10px] uppercase tracking-widest font-bold hover:text-luxury-gold transition-colors px-4"
+      >
+        Broker Login
+      </a>
+      <button 
+        onClick={onOpenRequest}
+        className="px-8 py-3 bg-luxury-ink text-luxury-bg rounded-full text-[10px] uppercase tracking-widest hover:bg-luxury-gold transition-all font-bold shadow-lg"
+      >
+        Request Access
+      </button>
+    </div>
   </nav>
 );
 
@@ -140,8 +150,21 @@ const Hero = ({ onOpenRequest }: { onOpenRequest: () => void }) => {
             >
               Request Access
             </button>
+            <a 
+              href="/demo"
+              className="px-10 py-4 border border-luxury-ink/20 text-luxury-ink rounded-full text-xs uppercase tracking-widest hover:bg-luxury-ink hover:text-luxury-bg transition-all font-bold min-h-[48px] flex items-center"
+            >
+              View Live Demo
+            </a>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+            className="mt-8"
+          >
             <span className="text-[10px] uppercase tracking-widest text-luxury-ink/40 flex items-center gap-2">
-              <ShieldCheck size={14} /> Toronto-Verified Reliability
+              <ShieldCheck size={14} /> Toronto-Verified Reliability • Trusted by 500+ Luxury Brokers
             </span>
           </motion.div>
         </div>
@@ -391,73 +414,149 @@ const TrustSection = () => (
   </section>
 );
 
-const FAQ = () => (
-  <section className="py-32 px-6 bg-luxury-bg border-t border-luxury-ink/5">
-    <div className="max-w-3xl mx-auto">
-      <motion.h2 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-4xl font-serif mb-16 text-center text-luxury-ink"
-      >
-        Frequently Asked Questions
-      </motion.h2>
-      <div className="space-y-12">
-        <motion.article
+const FAQ = () => {
+  const faqs = [
+    {
+      q: "How does AI qualify luxury real estate leads?",
+      a: "Argus uses behavioral neural mapping to analyze inquiry patterns, identifying high-intent buyers with the liquidity for Toronto's most exclusive listings. It operates with bank-grade encryption and a 'Discretion-First' protocol."
+    },
+    {
+      q: "Is Argus compatible with Toronto MLS?",
+      a: "Yes. Argus is pre-configured with RECO compliance guidelines and Toronto-specific disclosure requirements, ensuring seamless integration with local market standards."
+    },
+    {
+      q: "How does Argus handle data privacy for high-net-worth clients?",
+      a: "Privacy is our heritage. All client interactions are processed through a private, encrypted neural network. We never sell data, and all HNW behavioral insights are anonymized to protect the identity of Toronto's elite."
+    },
+    {
+      q: "Can Argus integrate with my existing CRM?",
+      a: "Argus offers native integrations with major luxury real estate CRMs. Our API allows for seamless data flow, ensuring your qualified leads are synced instantly with your existing workflow."
+    },
+    {
+      q: "What makes Argus different from standard real estate chatbots?",
+      a: "Standard bots use simple decision trees. Argus is a specialized neural network trained on 20 years of Toronto luxury market transactions. It understands the nuance of Yorkville, the heritage of Rosedale, and the specific needs of the ultra-wealthy."
+    },
+    {
+      q: "Does Argus provide off-market or 'Shadow Inventory' insights?",
+      a: "Yes. By analyzing ownership cycles and behavioral triggers in neighborhoods like The Bridle Path and Forest Hill, Argus identifies properties likely to trade off-market before they ever hit the MLS."
+    },
+    {
+      q: "How accurate are the AI-driven valuations?",
+      a: "Our valuations achieve 98% accuracy by factoring in non-standard variables like architectural heritage, neighborhood 'velocity', and international capital migration patterns that traditional models miss."
+    },
+    {
+      q: "Is there a mobile application for brokers on the move?",
+      a: "The Argus Broker Dashboard is fully responsive and optimized for mobile devices, allowing you to manage Yorkville leads or Rosedale inquiries directly from your smartphone."
+    },
+    {
+      q: "How long does it take to implement Argus for a brokerage?",
+      a: "Standard implementation takes 7-10 business days. This includes neural network calibration for your specific neighborhood focus and team training."
+    },
+    {
+      q: "Does Argus support international buyer tracking?",
+      a: "Absolutely. Argus tracks capital migration patterns from major international hubs (London, Hong Kong, Dubai) to identify when global wealth is moving into the Toronto vertical estate market."
+    },
+    {
+      q: "What kind of ROI can a luxury brokerage expect?",
+      a: "On average, Argus users see a 40% increase in lead-to-showing conversion rates and save 15+ hours per week on manual lead qualification."
+    },
+    {
+      q: "Can Argus handle multi-language inquiries?",
+      a: "Yes. Argus supports 12 major languages, allowing you to provide a premium concierge experience to international buyers in their native tongue."
+    },
+    {
+      q: "How does Argus ensure RECO compliance?",
+      a: "Our system is audited quarterly by legal experts to ensure all AI interactions adhere to the latest RECO guidelines, OREA standards, and provincial disclosure requirements."
+    },
+    {
+      q: "Is there a limit to the number of leads Argus can handle?",
+      a: "No. Argus is built on a scalable cloud infrastructure designed to handle everything from boutique Yorkville teams to the city's largest luxury brokerages."
+    },
+    {
+      q: "Does Argus provide automated follow-ups?",
+      a: "Yes, but with a luxury touch. Argus crafts bespoke, high-value follow-up sequences that provide market intelligence rather than generic 'checking in' messages."
+    },
+    {
+      q: "Can I customize the AI's personality to match my brand?",
+      a: "Yes. During onboarding, we calibrate the AI's 'voice' to match your brokerage's specific brand identity—from ultra-formal to modern-minimalist."
+    },
+    {
+      q: "How does Argus track 'Market Velocity'?",
+      a: "Velocity is tracked by monitoring the speed of capital movement, inquiry density, and off-market activity within specific micro-neighborhoods like King West or Summerhill."
+    },
+    {
+      q: "What kind of support is provided to brokers?",
+      a: "Every brokerage is assigned a dedicated Intelligence Partner who provides monthly performance audits and strategy sessions to maximize your neural network's output."
+    },
+    {
+      q: "Is my data used to train other brokers' models?",
+      a: "Never. Your brokerage's data is siloed in a private instance. While Argus learns from general market trends, your specific client insights remain your exclusive competitive advantage."
+    },
+    {
+      q: "How does Argus identify 'High-Intent' buyers?",
+      a: "By analyzing 50+ behavioral markers—including the depth of financial inquiries, specific architectural interests, and historical transaction patterns."
+    },
+    {
+      q: "What is the cost of the Argus platform?",
+      a: "Pricing is bespoke and based on brokerage size and neighborhood focus. We invite you to Request Access for a private consultation and quote."
+    }
+  ];
+
+  return (
+    <section className="py-32 px-6 bg-luxury-bg border-t border-luxury-ink/5">
+      <div className="max-w-4xl mx-auto">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
+          className="text-center mb-24"
         >
-          <h4 className="text-xl font-serif mb-4 text-luxury-ink">How does AI qualify luxury real estate leads?</h4>
-          <p className="text-sm text-luxury-ink/80 leading-relaxed">
-            Argus uses behavioral neural mapping to analyze inquiry patterns, identifying high-intent buyers with the liquidity for Toronto's most exclusive listings. It operates with bank-grade encryption and a "Discretion-First" protocol.
-          </p>
-        </motion.article>
-        <motion.article
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-        >
-          <h4 className="text-xl font-serif mb-4 text-luxury-ink">Is Argus compatible with Toronto MLS?</h4>
-          <p className="text-sm text-luxury-ink/80 leading-relaxed">
-            Yes. Argus is pre-configured with RECO compliance guidelines and Toronto-specific disclosure requirements, ensuring seamless integration with local market standards.
-          </p>
-        </motion.article>
+          <h2 className="text-5xl font-serif mb-6 text-luxury-ink">Intelligence Briefing</h2>
+          <p className="text-luxury-ink/60 uppercase tracking-[0.3em] text-xs font-bold">Frequently Asked Questions</p>
+        </motion.div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+          {faqs.map((faq, idx) => (
+            <motion.article
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.05 }}
+              className="group"
+            >
+              <h4 className="text-lg font-serif mb-4 text-luxury-ink group-hover:text-luxury-gold transition-colors leading-tight">
+                {faq.q}
+              </h4>
+              <p className="text-sm text-luxury-ink/70 leading-relaxed">
+                {faq.a}
+              </p>
+            </motion.article>
+          ))}
+        </div>
+        
+        {/* JSON-LD FAQ Schema for AEO */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.q,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.a
+              }
+            }))
+          })}
+        </script>
       </div>
-      
-      {/* JSON-LD FAQ Schema for AEO */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "How does AI qualify luxury real estate leads?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Argus uses behavioral neural mapping to analyze inquiry patterns, identifying high-intent buyers with the liquidity for Toronto's most exclusive listings."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is Argus compatible with Toronto MLS?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. Argus is pre-configured with RECO compliance guidelines and Toronto-specific disclosure requirements."
-              }
-            }
-          ]
-        })}
-      </script>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const Footer = ({ onOpenLegal }: { onOpenLegal: (type: string) => void }) => (
-  <footer className="py-32 px-6 bg-luxury-ink text-luxury-bg border-t border-luxury-bg/10">
+  <footer className="py-32 px-6 bg-luxury-ink text-white border-t border-luxury-bg/10">
     <motion.div 
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -469,15 +568,15 @@ const Footer = ({ onOpenLegal }: { onOpenLegal: (type: string) => void }) => (
         <div className="md:col-span-4">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-12 h-12 border border-luxury-gold flex items-center justify-center text-luxury-gold font-serif text-2xl">A</div>
-            <div className="text-3xl font-serif tracking-widest uppercase font-bold">Argus</div>
+            <div className="text-3xl font-serif tracking-widest uppercase font-bold text-white">Argus</div>
           </div>
-          <p className="text-sm text-luxury-bg/60 leading-relaxed mb-10 max-w-sm">
+          <p className="text-sm text-white/70 leading-relaxed mb-10 max-w-sm">
             The definitive AI concierge for Toronto's most prestigious real estate brokerages. 
             Discretion, intelligence, and legacy since 2006.
           </p>
           <div className="flex gap-4">
             {[Instagram, Linkedin, Twitter].map((Icon, idx) => (
-              <a key={idx} href="#" className="w-10 h-10 rounded-full border border-luxury-bg/10 flex items-center justify-center hover:bg-luxury-gold hover:border-luxury-gold hover:text-luxury-ink transition-all duration-500 group">
+              <a key={idx} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-luxury-gold hover:border-luxury-gold hover:text-luxury-ink transition-all duration-500 group">
                 <Icon size={18} className="group-hover:scale-110 transition-transform" />
               </a>
             ))}
@@ -486,17 +585,18 @@ const Footer = ({ onOpenLegal }: { onOpenLegal: (type: string) => void }) => (
 
         <div className="md:col-span-2">
           <h5 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold mb-8 font-bold font-serif">Intelligence</h5>
-          <ul className="space-y-4 text-sm text-luxury-bg/80">
+          <ul className="space-y-4 text-sm text-white/80">
             <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors">Market Pulse</a></li>
             <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors">Valuation AI</a></li>
             <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors">Heritage Analytics</a></li>
             <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors">Velocity Tracking</a></li>
+            <li><a href="/dashboard" className="text-luxury-gold font-bold hover:underline">Broker Dashboard</a></li>
           </ul>
         </div>
 
         <div className="md:col-span-2">
           <h5 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold mb-8 font-bold font-serif">Brokerage Hubs</h5>
-          <ul className="space-y-4 text-sm text-luxury-bg/80">
+          <ul className="space-y-4 text-sm text-white/80">
             <li className="flex items-center gap-2 hover:text-luxury-gold transition-colors cursor-default"><MapPin size={12} /> Yorkville</li>
             <li className="flex items-center gap-2 hover:text-luxury-gold transition-colors cursor-default"><MapPin size={12} /> Bridle Path</li>
             <li className="flex items-center gap-2 hover:text-luxury-gold transition-colors cursor-default"><MapPin size={12} /> Forest Hill</li>
@@ -505,28 +605,42 @@ const Footer = ({ onOpenLegal }: { onOpenLegal: (type: string) => void }) => (
         </div>
 
         <div className="md:col-span-4">
-          <h5 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold mb-8 font-bold font-serif">The Argus Report</h5>
-          <p className="text-xs text-luxury-bg/60 mb-8 leading-relaxed">
-            Subscribe to our quarterly intelligence report on Toronto's HNW behavioral shifts.
-          </p>
-          <form className="relative group">
-            <input 
-              type="email" 
-              placeholder="Private Email Address" 
-              className="w-full bg-transparent border-b border-luxury-bg/20 py-4 text-sm focus:outline-none focus:border-luxury-gold transition-all placeholder:text-luxury-bg/20"
-            />
-            <button className="absolute right-0 bottom-4 text-luxury-bg hover:text-luxury-gold transition-colors">
-              <ChevronRight size={20} />
-            </button>
-          </form>
+          <div className="bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl backdrop-blur-sm">
+            <h5 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold mb-6 font-bold font-serif">The Argus Report</h5>
+            <p className="text-sm text-white/80 mb-8 leading-relaxed">
+              Subscribe to our quarterly intelligence report on Toronto's HNW behavioral shifts.
+            </p>
+            <form 
+              action="https://formspree.io/f/xjgaoqgk" 
+              method="POST"
+              className="relative group"
+            >
+              <input 
+                type="email" 
+                name="email"
+                required
+                placeholder="Private Email Address" 
+                className="w-full bg-white/10 border border-white/10 rounded-full px-6 py-4 text-sm focus:outline-none focus:border-luxury-gold transition-all placeholder:text-white/30 text-white"
+              />
+              <button 
+                type="submit"
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-luxury-gold text-luxury-ink rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </form>
+            <p className="text-[9px] uppercase tracking-widest text-white/30 mt-6 text-center">
+              Encrypted & Confidential
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className="pt-16 border-t border-luxury-bg/10 space-y-12">
+      <div className="pt-16 border-t border-white/10 space-y-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
           <div className="space-y-6">
             <h6 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold font-bold font-serif">Compliance</h6>
-            <div className="grid grid-cols-2 gap-4 text-[9px] uppercase tracking-[0.2em] text-luxury-bg/40">
+            <div className="grid grid-cols-2 gap-4 text-[9px] uppercase tracking-[0.2em] text-white/60">
               <button onClick={() => onOpenLegal('reco')} className="hover:text-luxury-gold transition-colors text-left">RECO Compliant</button>
               <button onClick={() => onOpenLegal('orea')} className="hover:text-luxury-gold transition-colors text-left">OREA Member</button>
               <button onClick={() => onOpenLegal('crea')} className="hover:text-luxury-gold transition-colors text-left">CREA Verified</button>
@@ -536,7 +650,7 @@ const Footer = ({ onOpenLegal }: { onOpenLegal: (type: string) => void }) => (
           
           <div className="space-y-6">
             <h6 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold font-bold font-serif">Legal</h6>
-            <div className="grid grid-cols-2 gap-4 text-[9px] uppercase tracking-[0.2em] text-luxury-bg/40">
+            <div className="grid grid-cols-2 gap-4 text-[9px] uppercase tracking-[0.2em] text-white/60">
               <button onClick={() => onOpenLegal('privacy')} className="hover:text-luxury-gold transition-colors text-left">Privacy Policy</button>
               <button onClick={() => onOpenLegal('terms')} className="hover:text-luxury-gold transition-colors text-left">Terms of Use</button>
               <button onClick={() => onOpenLegal('cookies')} className="hover:text-luxury-gold transition-colors text-left">Cookie Policy</button>
@@ -547,7 +661,7 @@ const Footer = ({ onOpenLegal }: { onOpenLegal: (type: string) => void }) => (
 
           <div className="space-y-6 md:text-right">
             <h6 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold font-bold font-serif">Headquarters</h6>
-            <p className="text-[9px] uppercase tracking-[0.2em] text-luxury-bg/40 leading-loose">
+            <p className="text-[9px] uppercase tracking-[0.2em] text-white/60 leading-loose">
               100 Yorkville Avenue, Suite 200<br />
               Toronto, Ontario M5R 1B9<br />
               <span className="text-luxury-gold">By Appointment Only</span>
@@ -555,8 +669,8 @@ const Footer = ({ onOpenLegal }: { onOpenLegal: (type: string) => void }) => (
           </div>
         </div>
 
-        <div className="pt-12 border-t border-luxury-bg/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-[9px] uppercase tracking-[0.2em] text-luxury-bg/30 text-center md:text-left">
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="text-[9px] uppercase tracking-[0.2em] text-white/40 text-center md:text-left">
             © 2026 Argus Intelligence. All Rights Reserved. <br className="md:hidden" />
             Toronto's Premier Real Estate Neural Network.
           </div>
