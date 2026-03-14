@@ -1,20 +1,35 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 🏛️ ARGUS AI | Elite Sales Closer
+> **Generative Intelligence for the 1%.** A bespoke AI sales concierge engineered for high-net-worth real estate brokerages in the Toronto GTA.
 
-# Run and deploy your AI Studio app
+[![Status: Private Beta](https://img.shields.io/badge/Status-Private_Beta-gold?style=flat-square)](https://vercel.app)
+[![Tech: Next.js 16](https://img.shields.io/badge/Tech-Next.js_16-black?style=flat-square)](https://nextjs.org)
+[![Market: Toronto Luxury](https://img.shields.io/badge/Market-Toronto_Luxury-blue?style=flat-square)](#)
 
-This contains everything you need to run your app locally.
+---
 
-View your app in AI Studio: https://ai.studio/apps/1f40f33d-ef10-4d33-b92e-ffa972e5c372
+## 💎 Project Vision
+ARGUS is not a chatbot; it is an **Agentic Sales Concierge**. Built specifically for elite Toronto teams (e.g., Barry Cohen, Harvey Kalles, The Brel Team), it bridges the gap between cold digital leads and $100K+ commission closings. 
 
-## Run Locally
+By leveraging **Gemini 1.5 Pro** and localized market data, ARGUS qualifies leads through natural, human-centric dialogue, ensuring that your agents only spend time on "ready-to-move" high-net-worth individuals.
 
-**Prerequisites:**  Node.js
+## 🚀 Key Features (2026 Edition)
+- **Agentic Lead Qualification:** Autonomously determines intent, budget, and timeline through sophisticated, non-linear conversation.
+- **Toronto GTA Intelligence:** Deeply understands neighborhood prestige (Yorkville, Bridle Path, Rosedale) and localized value drivers.
+- **Voice & Web Multi-Modal:** Deployable as an interactive web concierge or a high-fidelity voice agent.
+- **AI-First SEO (AEO):** Fully optimized with JSON-LD Schema to ensure the project is the "cited answer" in Google AI Overviews.
+- **Liquid Glass UI:** Built with a "Warm Modern" aesthetic that signals trust and exclusivity.
 
+## 🛠 Technical Stack
+- **Framework:** Next.js 16 (App Router)
+- **AI Engine:** Google AI Studio (Gemini 1.5 Pro / Flash)
+- **Styling:** Tailwind CSS 4.0 + Glassmorphism 2.0
+- **Voice Integration:** Retell AI / Vapi
+- **Deployment:** Vercel (Edge Functions)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 📂 Repository Structure
+```text
+├── app/                # Optimized Frontend (Liquid Glass UI)
+├── components/         # High-End UI Components & Bento Grids
+├── prompts/            # System Instructions & Toronto Sales Logic
+├── lib/                # AI Utility Functions & Entity Mapping
+└── public/             # Optimized 8K Luxury Assets
