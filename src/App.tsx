@@ -14,6 +14,7 @@ import {
   ChevronRight,
   Award,
   CheckCircle2,
+  Calendar,
   X,
   Send,
   User,
@@ -102,8 +103,8 @@ const Hero = ({ onOpenRequest }: { onOpenRequest: () => void }) => {
             transition={{ duration: 1, delay: 0.4 }}
             className="text-5xl md:text-8xl font-serif leading-[0.95] mb-10 tracking-tight text-luxury-ink drop-shadow-[0_2px_10px_rgba(255,255,255,0.8)]"
           >
-            Stop Chasing Leads. <br />
-            <span className="italic">Scale Your Legacy.</span>
+            Never miss a <br />
+            <span className="italic">multi-million dollar inquiry again.</span>
           </motion.h1>
           
           {/* Ambient AI Search Bar */}
@@ -140,8 +141,8 @@ const Hero = ({ onOpenRequest }: { onOpenRequest: () => void }) => {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="text-lg md:text-xl font-medium max-w-2xl mx-auto mb-12 text-white leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
           >
-            Argus is the elite AI sales concierge that qualifies $100K+ commissions while you focus on the handshake. 
-            Built for Toronto's top 1%, by the city's most advanced neural network.
+            Argus uses Agentic Intelligence to qualify $100K+ commissions with Zero-Latency. 
+            A human-grade concierge built for Toronto's top 1%, ensuring your brand's reputation for high-touch service remains bespoke.
           </motion.p>
           
           <motion.div 
@@ -201,11 +202,11 @@ const ProofSection = () => (
         >
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-luxury-gold/10 text-luxury-gold text-[10px] uppercase tracking-widest font-bold mb-6">
-              <TrendingUp size={12} /> Revenue Velocity Engine
+              <TrendingUp size={12} /> The Hidden Cost of Success
             </div>
-            <h3 className="text-4xl font-serif text-luxury-ink mb-4 leading-tight">Turn Your Database Into a <br />$10M+ Annual Revenue Engine.</h3>
+            <h3 className="text-4xl font-serif text-luxury-ink mb-4 leading-tight">65% of luxury leads go cold <br />while you're in a closing.</h3>
           </div>
-          <p className="text-luxury-ink/70 max-w-md font-medium">Argus identifies the high-net-worth liquidity shifts in your database before your competitors even know they're active. Stop losing $100K commissions to slow response times.</p>
+          <p className="text-luxury-ink/70 max-w-md font-medium">In 2026, a 5-minute delay in responding to a Yorkville buyer reduces conversion by 21 times. Argus eliminates this latency, acting as your 24/7 digital team member.</p>
         </motion.div>
 
         {/* Bento Grid Item 2 */}
@@ -217,10 +218,10 @@ const ProofSection = () => (
           className="p-12 glass-card rounded-3xl flex flex-col items-center justify-center text-center"
         >
           <div className="w-20 h-20 rounded-full bg-luxury-ink text-luxury-bg flex items-center justify-center mb-6 shadow-xl">
-            <Award size={40} />
+            <TrendingUp size={40} />
           </div>
-          <div className="text-[10px] uppercase tracking-widest text-luxury-gold font-bold mb-2">Toronto Market Entity</div>
-          <h4 className="text-2xl font-serif text-luxury-ink italic">Verified Heritage</h4>
+          <div className="text-[10px] uppercase tracking-widest text-luxury-gold font-bold mb-2">Primary Metric</div>
+          <h4 className="text-2xl font-serif text-luxury-ink italic">Lead Velocity Index</h4>
         </motion.div>
 
         {/* Bento Grid Item 3 */}
@@ -229,10 +230,13 @@ const ProofSection = () => (
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="p-12 glass-card rounded-3xl flex flex-col justify-center"
+          className="p-12 glass-card rounded-3xl flex flex-col justify-center text-center"
         >
-          <div className="text-5xl font-serif text-luxury-ink mb-2">94%</div>
-          <div className="text-[10px] uppercase tracking-widest text-luxury-accent font-bold">Qualification Accuracy</div>
+          <div className="w-16 h-16 rounded-full bg-luxury-accent/10 flex items-center justify-center mb-6 mx-auto">
+            <Calendar size={32} className="text-luxury-accent" />
+          </div>
+          <h4 className="text-xl font-serif text-luxury-ink mb-2">Autonomous Viewing Scheduler</h4>
+          <div className="text-[10px] uppercase tracking-widest text-luxury-accent font-bold">MLS-Integrated</div>
         </motion.div>
 
         {/* Bento Grid Item 4 */}
@@ -244,8 +248,8 @@ const ProofSection = () => (
           className="md:col-span-2 p-12 glass-card rounded-3xl flex flex-col md:flex-row items-center gap-12"
         >
           <div className="flex-1">
-            <h3 className="text-3xl font-serif text-luxury-ink mb-4">Discreet Intelligence.</h3>
-            <p className="text-luxury-ink/60">Argus operates in the shadows, maintaining the prestige of your brand while providing the data you need to win the listing.</p>
+            <h3 className="text-3xl font-serif text-luxury-ink mb-4">The Gatekeeper.</h3>
+            <p className="text-luxury-ink/60">Argus acts as your high-intent filter, ensuring you only see viewings for pre-qualified buyers with confirmed budgets. Agentic Intelligence that feels human, professional, and bespoke.</p>
           </div>
           <div className="flex gap-4">
             <div className="w-16 h-16 rounded-2xl bg-luxury-ink/5 flex items-center justify-center">
@@ -292,7 +296,7 @@ const Intelligence = () => (
             <span className="italic text-luxury-gold underline decoration-luxury-gold/20 underline-offset-8">Shadow Inventory.</span>
           </h2>
           <p className="text-luxury-ink mb-8 leading-relaxed font-medium">
-            The real money in Toronto luxury isn't on the MLS—it's in the off-market shifts. Argus monitors liquidity in the Bridle Path, Rosedale's heritage scarcity, and Yorkville's vertical estate velocity to find your next $20M listing before it's even a thought.
+            Engineered for the GTA. Argus is MLS-integrated and Bridle Path ready, monitoring liquidity shifts in Toronto's most exclusive enclaves to find your next $20M listing before it's even a thought.
           </p>
           <div className="grid grid-cols-2 gap-8 mb-12">
             <div>
@@ -355,8 +359,8 @@ const Intelligence = () => (
         <FeatureCard 
           index={0}
           icon={Target}
-          title="Precision Liquidity Targeting"
-          description="Identify buyers with the specific capital profiles for Toronto's $10M+ listings before they even reach the open market."
+          title="The Gatekeeper"
+          description="High-intent filtering that ensures you only see viewings for pre-qualified buyers with confirmed budgets and verified liquidity."
         />
         <FeatureCard 
           index={1}
@@ -412,8 +416,7 @@ const TrustSection = () => (
       <Award size={48} className="mx-auto mb-8 text-luxury-gold" />
       <h2 className="text-4xl font-serif mb-8 italic text-luxury-ink">"The standard for Toronto's elite."</h2>
       <p className="text-lg text-luxury-ink mb-12 leading-relaxed">
-        Built on 20 years of local market intelligence, Argus isn't just technology. 
-        It's a digital extension of the heritage and trust that Toronto's top 1% of brokers have built over decades.
+        Engineered for the GTA. MLS-integrated and Bridle Path ready. Argus isn't just technology—it's a digital extension of the heritage and trust that Toronto's top 1% of brokers have built over decades.
       </p>
       <div className="flex justify-center gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
         <div className="text-xl font-serif tracking-widest text-luxury-ink">BARRY COHEN</div>
