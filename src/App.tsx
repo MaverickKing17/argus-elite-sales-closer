@@ -70,7 +70,7 @@ const Hero = ({ onOpenRequest }: { onOpenRequest: () => void }) => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 1 }}
-      className="relative min-h-screen flex flex-col items-center justify-center px-6 py-32 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-48 pb-32 overflow-visible"
     >
       <motion.div 
         style={{ y: y1 }}
@@ -79,7 +79,7 @@ const Hero = ({ onOpenRequest }: { onOpenRequest: () => void }) => {
         <img 
           src="https://i.ibb.co/LzTK50Hh/wan2-5-t2i-preview-a-Prompt-A-profession.png" 
           alt="Elite Luxury Professional" 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-top"
           referrerPolicy="no-referrer"
         />
         {/* Minimalist gradient overlay for maximum image visibility */}
@@ -569,7 +569,7 @@ const FAQ = () => {
 };
 
 const Footer = ({ onOpenLegal, onOpenRequest }: { onOpenLegal: (type: string) => void, onOpenRequest: () => void }) => (
-  <footer className="relative py-32 px-6 bg-luxury-ink text-white overflow-hidden">
+  <footer className="relative py-32 px-6 bg-luxury-ink text-white">
     {/* Atmospheric Background */}
     <div className="absolute inset-0 z-0 opacity-70">
       <img 
@@ -804,7 +804,7 @@ const LegalModal = ({ type, onClose }: { type: string | null, onClose: () => voi
       <motion.div 
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
-        className="bg-luxury-bg w-full max-w-2xl rounded-3xl p-12 shadow-2xl relative overflow-hidden"
+        className="bg-luxury-bg w-full max-w-2xl rounded-3xl p-12 shadow-2xl relative overflow-y-auto max-h-[90vh]"
         onClick={e => e.stopPropagation()}
       >
         <button onClick={onClose} className="absolute top-8 right-8 text-luxury-ink/40 hover:text-luxury-ink transition-colors">
@@ -856,7 +856,7 @@ const RequestModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => voi
       <motion.div 
         initial={{ scale: 0.9, y: 40, opacity: 0 }}
         animate={{ scale: 1, y: 0, opacity: 1 }}
-        className="bg-luxury-bg w-full max-w-lg rounded-[2rem] p-12 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] relative overflow-hidden border border-luxury-ink/5"
+        className="bg-luxury-bg w-full max-w-lg rounded-[2rem] p-12 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] relative overflow-y-auto max-h-[90vh] border border-luxury-ink/5"
         onClick={e => e.stopPropagation()}
       >
         {/* Decorative background element */}
