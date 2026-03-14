@@ -16,7 +16,14 @@ import {
   CheckCircle2,
   X,
   Send,
-  User
+  User,
+  Instagram,
+  Linkedin,
+  Twitter,
+  FileText,
+  Scale,
+  ShieldAlert,
+  Accessibility as AccessibilityIcon
 } from 'lucide-react';
 import { io } from 'socket.io-client';
 
@@ -354,7 +361,7 @@ const FAQ = () => (
   </motion.section>
 );
 
-const Footer = () => (
+const Footer = ({ onOpenLegal }: { onOpenLegal: (type: string) => void }) => (
   <footer className="py-32 px-6 bg-luxury-ink text-luxury-bg border-t border-luxury-ink/5">
     <div className="max-w-7xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
@@ -365,25 +372,25 @@ const Footer = () => (
             Discretion, intelligence, and legacy.
           </p>
           <div className="flex gap-4">
-            <div className="w-10 h-10 rounded-full border border-luxury-bg/10 flex items-center justify-center hover:bg-luxury-bg hover:text-luxury-ink transition-all cursor-pointer">
-              <span className="text-[10px]">IG</span>
-            </div>
-            <div className="w-10 h-10 rounded-full border border-luxury-bg/10 flex items-center justify-center hover:bg-luxury-bg hover:text-luxury-ink transition-all cursor-pointer">
-              <span className="text-[10px]">LI</span>
-            </div>
-            <div className="w-10 h-10 rounded-full border border-luxury-bg/10 flex items-center justify-center hover:bg-luxury-bg hover:text-luxury-ink transition-all cursor-pointer">
-              <span className="text-[10px]">TW</span>
-            </div>
+            <a href="#" className="w-10 h-10 rounded-full border border-luxury-bg/10 flex items-center justify-center hover:bg-luxury-bg hover:text-luxury-ink transition-all cursor-pointer group">
+              <Instagram size={18} className="group-hover:scale-110 transition-transform" />
+            </a>
+            <a href="#" className="w-10 h-10 rounded-full border border-luxury-bg/10 flex items-center justify-center hover:bg-luxury-bg hover:text-luxury-ink transition-all cursor-pointer group">
+              <Linkedin size={18} className="group-hover:scale-110 transition-transform" />
+            </a>
+            <a href="#" className="w-10 h-10 rounded-full border border-luxury-bg/10 flex items-center justify-center hover:bg-luxury-bg hover:text-luxury-ink transition-all cursor-pointer group">
+              <Twitter size={18} className="group-hover:scale-110 transition-transform" />
+            </a>
           </div>
         </div>
 
         <div>
           <h5 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold mb-8 font-bold">Intelligence</h5>
           <ul className="space-y-4 text-sm text-luxury-bg">
-            <li><a href="#" className="hover:text-luxury-gold transition-colors">Lead Scoring</a></li>
-            <li><a href="#" className="hover:text-luxury-gold transition-colors">Market Analysis</a></li>
-            <li><a href="#" className="hover:text-luxury-gold transition-colors">Concierge AI</a></li>
-            <li><a href="#" className="hover:text-luxury-gold transition-colors">GEO Optimization</a></li>
+            <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors">Yorkville Market Pulse</a></li>
+            <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors">Bridle Path Valuation AI</a></li>
+            <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors">Rosedale Heritage Analytics</a></li>
+            <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors">King West Velocity Tracking</a></li>
           </ul>
         </div>
 
@@ -416,22 +423,117 @@ const Footer = () => (
       </div>
 
       <div className="pt-12 border-t border-luxury-bg/5 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="flex gap-8 text-[9px] uppercase tracking-[0.2em] text-luxury-bg/60">
-          <span>RECO Compliant</span>
-          <span>OREA Member</span>
-          <span>CREA Verified</span>
+        <div className="flex flex-wrap justify-center gap-6 text-[9px] uppercase tracking-[0.2em] text-luxury-bg/60">
+          <button onClick={() => onOpenLegal('reco')} className="hover:text-luxury-gold transition-colors">RECO Compliant</button>
+          <button onClick={() => onOpenLegal('orea')} className="hover:text-luxury-gold transition-colors">OREA Member</button>
+          <button onClick={() => onOpenLegal('crea')} className="hover:text-luxury-gold transition-colors">CREA Verified</button>
+          <button onClick={() => onOpenLegal('accessibility')} className="hover:text-luxury-gold transition-colors">AODA Accessibility</button>
         </div>
-        <div className="text-[9px] uppercase tracking-[0.2em] text-luxury-bg/60">
+        <div className="text-[9px] uppercase tracking-[0.2em] text-luxury-bg/60 text-center">
           © 2026 Argus Intelligence. All Rights Reserved. Toronto Luxury Real Estate AI.
         </div>
-        <div className="flex gap-8 text-[9px] uppercase tracking-[0.2em] text-luxury-bg/60">
-          <a href="#" className="hover:text-luxury-gold transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-luxury-gold transition-colors">Terms of Service</a>
+        <div className="flex flex-wrap justify-center gap-6 text-[9px] uppercase tracking-[0.2em] text-luxury-bg/60">
+          <button onClick={() => onOpenLegal('privacy')} className="hover:text-luxury-gold transition-colors">Privacy</button>
+          <button onClick={() => onOpenLegal('terms')} className="hover:text-luxury-gold transition-colors">Terms</button>
+          <button onClick={() => onOpenLegal('cookies')} className="hover:text-luxury-gold transition-colors">Cookies</button>
+          <button onClick={() => onOpenLegal('dmca')} className="hover:text-luxury-gold transition-colors">DMCA</button>
+          <button onClick={() => onOpenLegal('disclaimer')} className="hover:text-luxury-gold transition-colors">Disclaimer</button>
         </div>
       </div>
     </div>
   </footer>
 );
+
+const LegalModal = ({ type, onClose }: { type: string | null, onClose: () => void }) => {
+  if (!type) return null;
+
+  const content: Record<string, { title: string, body: string, icon: any }> = {
+    privacy: {
+      title: "Privacy Policy",
+      icon: ShieldCheck,
+      body: "Argus Intelligence is committed to the highest standards of data privacy for Toronto's elite real estate sector. We employ bank-grade encryption and a 'Discretion-First' protocol. Your client data is never used to train third-party models. We comply with PIPEDA and provincial privacy regulations."
+    },
+    terms: {
+      title: "Terms of Service",
+      icon: Scale,
+      body: "By accessing the Argus platform, you agree to our professional standards of conduct. Our AI services are provided as a decision-support tool for licensed real estate professionals. Unauthorized scraping or reverse-engineering of our Toronto market neural networks is strictly prohibited."
+    },
+    cookies: {
+      title: "Cookie Policy",
+      icon: FileText,
+      body: "We use essential cookies to maintain your secure session and remember your preferences. These cookies are necessary for the 'Concierge AI' to provide a consistent experience across your Yorkville and Bridle Path listing management sessions."
+    },
+    dmca: {
+      title: "DMCA Notice",
+      icon: ShieldAlert,
+      body: "Argus respects intellectual property rights. If you believe listing data or imagery on our platform infringes your copyright, please submit a formal DMCA notice to our legal department. We protect the proprietary data of Toronto's top brokerages."
+    },
+    disclaimer: {
+      title: "Legal Disclaimer",
+      icon: ShieldAlert,
+      body: "Argus AI provides market intelligence and lead qualification based on historical data and behavioral patterns. It does not constitute financial or legal advice. All real estate transactions should be verified by licensed professionals in accordance with RECO guidelines."
+    },
+    accessibility: {
+      title: "Accessibility (AODA)",
+      icon: AccessibilityIcon,
+      body: "Argus is committed to digital inclusion. We strive to meet the Integrated Accessibility Standards Regulation (IASR) under the Accessibility for Ontarians with Disabilities Act (AODA). Our interface is designed for compatibility with assistive technologies."
+    },
+    reco: {
+      title: "RECO Compliance",
+      icon: CheckCircle2,
+      body: "Argus is engineered to support compliance with the Real Estate Council of Ontario (RECO). Our AI-generated communications include necessary disclosures and adhere to the Trust in Real Estate Services Act (TRESA) standards."
+    },
+    orea: {
+      title: "OREA Standards",
+      icon: Award,
+      body: "We align our data processing and professional ethics with the Ontario Real Estate Association (OREA) guidelines, ensuring our AI tools support the high standards of Ontario REALTORS®."
+    },
+    crea: {
+      title: "CREA Verification",
+      icon: CheckCircle2,
+      body: "Argus respects the trademarks and data standards of the Canadian Real Estate Association (CREA). Our platform is designed to complement the tools used by CREA members across Canada."
+    }
+  };
+
+  const active = content[type] || content.privacy;
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <motion.div 
+        initial={{ scale: 0.9, y: 20 }}
+        animate={{ scale: 1, y: 0 }}
+        className="bg-luxury-bg w-full max-w-2xl rounded-3xl p-12 shadow-2xl relative overflow-hidden"
+        onClick={e => e.stopPropagation()}
+      >
+        <button onClick={onClose} className="absolute top-8 right-8 text-luxury-ink/40 hover:text-luxury-ink transition-colors">
+          <X size={24} />
+        </button>
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-12 h-12 rounded-full bg-luxury-gold/10 flex items-center justify-center text-luxury-gold">
+            <active.icon size={24} />
+          </div>
+          <h2 className="text-3xl font-serif text-luxury-ink">{active.title}</h2>
+        </div>
+        <div className="prose prose-sm text-luxury-ink/80 leading-relaxed">
+          <p>{active.body}</p>
+          <p className="mt-6 text-[10px] uppercase tracking-widest opacity-40">Last Updated: March 2026 • Toronto, ON</p>
+        </div>
+        <button 
+          onClick={onClose}
+          className="mt-12 w-full py-4 bg-luxury-ink text-luxury-bg rounded-full text-xs uppercase tracking-widest hover:bg-luxury-gold transition-colors font-bold"
+        >
+          Close Document
+        </button>
+      </motion.div>
+    </motion.div>
+  );
+};
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -560,6 +662,8 @@ const ChatWidget = () => {
 };
 
 export default function App() {
+  const [legalType, setLegalType] = useState<string | null>(null);
+
   useEffect(() => {
     // Smooth scroll behavior
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -585,8 +689,9 @@ export default function App() {
         <TrustSection />
         <FAQ />
       </main>
-      <Footer />
+      <Footer onOpenLegal={setLegalType} />
       <ChatWidget />
+      <LegalModal type={legalType} onClose={() => setLegalType(null)} />
     </div>
   );
 }
