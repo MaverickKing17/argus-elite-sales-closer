@@ -91,7 +91,7 @@ const Hero = ({ onOpenRequest }: { onOpenRequest: () => void }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xs uppercase tracking-[0.5em] text-luxury-gold mb-6 block font-bold"
+            className="text-sm uppercase tracking-[0.5em] text-white mb-6 block font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
           >
             The Multi-Million Dollar Pipeline Engine
           </motion.span>
@@ -138,7 +138,7 @@ const Hero = ({ onOpenRequest }: { onOpenRequest: () => void }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-lg md:text-xl font-medium max-w-2xl mx-auto mb-12 text-luxury-ink leading-relaxed"
+            className="text-lg md:text-xl font-medium max-w-2xl mx-auto mb-12 text-white leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
           >
             Argus is the elite AI sales concierge that qualifies $100K+ commissions while you focus on the handshake. 
             Built for Toronto's top 1%, by the city's most advanced neural network.
@@ -171,18 +171,18 @@ const Hero = ({ onOpenRequest }: { onOpenRequest: () => void }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
-            className="mt-12"
+            className="mt-12 inline-flex items-center gap-3 px-8 py-3 bg-white/60 backdrop-blur-md rounded-full border border-white/20 shadow-xl"
           >
-            <span className="text-[10px] uppercase tracking-[0.4em] text-luxury-ink/60 flex items-center gap-3 font-bold">
-              <ShieldCheck size={16} className="text-luxury-gold" /> SECURE TORONTO NETWORK • $2.4B IN QUALIFIED PIPELINE
+            <span className="text-xs uppercase tracking-[0.4em] text-luxury-ink flex items-center gap-3 font-bold">
+              <ShieldCheck size={18} className="text-luxury-gold" /> SECURE TORONTO NETWORK • $2.4B IN QUALIFIED PIPELINE
             </span>
           </motion.div>
         </div>
       </div>
 
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-60">
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
         <div className="w-[1px] h-16 bg-luxury-gold"></div>
-        <span className="text-[10px] uppercase tracking-[0.4em] text-luxury-ink font-bold">Market Intelligence</span>
+        <span className="text-[10px] uppercase tracking-[0.5em] text-luxury-ink font-bold opacity-80">Market Intelligence</span>
       </div>
     </motion.section>
   );
@@ -291,17 +291,17 @@ const Intelligence = () => (
             Monetize the <br />
             <span className="italic text-luxury-gold underline decoration-luxury-gold/20 underline-offset-8">Shadow Inventory.</span>
           </h2>
-          <p className="text-luxury-ink/80 mb-8 leading-relaxed font-medium">
+          <p className="text-luxury-ink mb-8 leading-relaxed font-medium">
             The real money in Toronto luxury isn't on the MLS—it's in the off-market shifts. Argus monitors liquidity in the Bridle Path, Rosedale's heritage scarcity, and Yorkville's vertical estate velocity to find your next $20M listing before it's even a thought.
           </p>
           <div className="grid grid-cols-2 gap-8 mb-12">
             <div>
               <p className="text-3xl font-serif text-luxury-gold mb-1 font-bold">$2.4B</p>
-              <p className="text-[10px] uppercase tracking-widest opacity-80 font-bold">Qualified Pipeline Identified</p>
+              <p className="text-xs uppercase tracking-widest font-bold text-luxury-ink">Qualified Pipeline Identified</p>
             </div>
             <div>
               <p className="text-3xl font-serif text-luxury-gold mb-1 font-bold">4.2x</p>
-              <p className="text-[10px] uppercase tracking-widest opacity-80 font-bold">GCI Growth Multiplier</p>
+              <p className="text-xs uppercase tracking-widest font-bold text-luxury-ink">GCI Growth Multiplier</p>
             </div>
           </div>
           <ul className="space-y-4">
@@ -411,7 +411,7 @@ const TrustSection = () => (
     >
       <Award size={48} className="mx-auto mb-8 text-luxury-gold" />
       <h2 className="text-4xl font-serif mb-8 italic text-luxury-ink">"The standard for Toronto's elite."</h2>
-      <p className="text-lg text-luxury-ink/80 mb-12 leading-relaxed">
+      <p className="text-lg text-luxury-ink mb-12 leading-relaxed">
         Built on 20 years of local market intelligence, Argus isn't just technology. 
         It's a digital extension of the heritage and trust that Toronto's top 1% of brokers have built over decades.
       </p>
@@ -568,23 +568,23 @@ const FAQ = () => {
 const Footer = ({ onOpenLegal, onOpenRequest }: { onOpenLegal: (type: string) => void, onOpenRequest: () => void }) => (
   <footer className="relative py-32 px-6 bg-luxury-ink text-white overflow-hidden">
     {/* Atmospheric Background */}
-    <div className="absolute inset-0 z-0 opacity-20">
+    <div className="absolute inset-0 z-0 opacity-70">
       <img 
-        src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=2000" 
-        alt="Luxury Interior" 
-        className="w-full h-full object-cover grayscale"
+        src="https://i.ibb.co/2YcTW4Dq/qwen-image-prompt-extend-a-Prompt-A-profession.png" 
+        alt="Luxury Real Estate" 
+        className="w-full h-full object-cover"
         referrerPolicy="no-referrer"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-luxury-ink via-luxury-ink/80 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-luxury-ink via-luxury-ink/70 to-transparent"></div>
     </div>
 
     <div className="relative z-10 max-w-7xl mx-auto border-b border-white/10 pb-16 mb-20">
-      <div className="flex flex-wrap justify-center md:justify-between items-center gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
-        <span className="text-[10px] uppercase tracking-[0.5em] font-bold">Sotheby's</span>
-        <span className="text-[10px] uppercase tracking-[0.5em] font-bold">Engel & Völkers</span>
-        <span className="text-[10px] uppercase tracking-[0.5em] font-bold">Chestnut Park</span>
-        <span className="text-[10px] uppercase tracking-[0.5em] font-bold">Harvey Kalles</span>
-        <span className="text-[10px] uppercase tracking-[0.5em] font-bold">Royal LePage</span>
+      <div className="flex flex-wrap justify-center md:justify-between items-center gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
+        <span className="text-xs uppercase tracking-[0.5em] font-bold">Sotheby's</span>
+        <span className="text-xs uppercase tracking-[0.5em] font-bold">Engel & Völkers</span>
+        <span className="text-xs uppercase tracking-[0.5em] font-bold">Chestnut Park</span>
+        <span className="text-xs uppercase tracking-[0.5em] font-bold">Harvey Kalles</span>
+        <span className="text-xs uppercase tracking-[0.5em] font-bold">Royal LePage</span>
       </div>
     </div>
 
@@ -603,12 +603,12 @@ const Footer = ({ onOpenLegal, onOpenRequest }: { onOpenLegal: (type: string) =>
               <div className="w-14 h-14 border-2 border-luxury-gold flex items-center justify-center text-luxury-gold font-serif text-3xl">A</div>
               <div className="text-4xl font-serif tracking-[0.2em] uppercase font-bold text-white">Argus</div>
             </div>
-            <p className="text-lg text-white/70 leading-relaxed max-w-md font-light">
+            <p className="text-lg text-white leading-relaxed max-w-md font-light">
               The definitive AI concierge for Toronto's most prestigious real estate brokerages. 
               Engineering discretion, intelligence, and legacy since 2006.
             </p>
             <div className="pt-2">
-              <span className="text-[10px] uppercase tracking-[0.6em] text-luxury-gold/40 font-bold">Built for the Top 1%</span>
+              <span className="text-xs uppercase tracking-[0.6em] text-luxury-gold/80 font-bold">Built for the Top 1%</span>
             </div>
           </div>
           
@@ -635,8 +635,8 @@ const Footer = ({ onOpenLegal, onOpenRequest }: { onOpenLegal: (type: string) =>
         {/* Links Grid */}
         <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="space-y-8">
-            <h5 className="text-[10px] uppercase tracking-[0.4em] text-luxury-gold font-bold font-serif border-b border-luxury-gold/20 pb-4">Intelligence</h5>
-            <ul className="space-y-5 text-sm text-white/60">
+            <h5 className="text-sm uppercase tracking-[0.4em] text-white font-bold font-serif border-b border-white/20 pb-4">Intelligence</h5>
+            <ul className="space-y-5 text-sm text-white">
               <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors block">Market Pulse</a></li>
               <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors block">Valuation AI</a></li>
               <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors block">Heritage Analytics</a></li>
@@ -646,8 +646,8 @@ const Footer = ({ onOpenLegal, onOpenRequest }: { onOpenLegal: (type: string) =>
           </div>
 
           <div className="space-y-8">
-            <h5 className="text-[10px] uppercase tracking-[0.4em] text-luxury-gold font-bold font-serif border-b border-luxury-gold/20 pb-4">Brokerage Hubs</h5>
-            <ul className="space-y-5 text-sm text-white/60">
+            <h5 className="text-sm uppercase tracking-[0.4em] text-white font-bold font-serif border-b border-white/20 pb-4">Brokerage Hubs</h5>
+            <ul className="space-y-5 text-sm text-white">
               <li className="flex items-center gap-3 hover:text-luxury-gold transition-colors cursor-default"><MapPin size={14} className="text-luxury-gold" /> Yorkville</li>
               <li className="flex items-center gap-3 hover:text-luxury-gold transition-colors cursor-default"><MapPin size={14} className="text-luxury-gold" /> Bridle Path</li>
               <li className="flex items-center gap-3 hover:text-luxury-gold transition-colors cursor-default"><MapPin size={14} className="text-luxury-gold" /> Forest Hill</li>
@@ -656,9 +656,9 @@ const Footer = ({ onOpenLegal, onOpenRequest }: { onOpenLegal: (type: string) =>
           </div>
 
           <div className="space-y-8">
-            <h5 className="text-[10px] uppercase tracking-[0.4em] text-luxury-gold font-bold font-serif border-b border-luxury-gold/20 pb-4">The Report</h5>
+            <h5 className="text-sm uppercase tracking-[0.4em] text-white font-bold font-serif border-b border-white/20 pb-4">The Report</h5>
             <div className="space-y-6">
-              <p className="text-xs text-white/50 leading-relaxed">
+              <p className="text-sm text-white/80 leading-relaxed">
                 Subscribe to our quarterly intelligence report on Toronto's HNW behavioral shifts.
               </p>
               <form 
@@ -689,8 +689,8 @@ const Footer = ({ onOpenLegal, onOpenRequest }: { onOpenLegal: (type: string) =>
       <div className="pt-20 border-t border-white/10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start mb-20">
           <div className="md:col-span-4 space-y-6">
-            <h6 className="text-[10px] uppercase tracking-[0.4em] text-luxury-gold font-bold font-serif">Compliance</h6>
-            <div className="grid grid-cols-2 gap-y-4 gap-x-8 text-[10px] uppercase tracking-[0.2em] text-white/40">
+            <h6 className="text-sm uppercase tracking-[0.4em] text-white font-bold font-serif">Compliance</h6>
+            <div className="grid grid-cols-2 gap-y-4 gap-x-8 text-xs uppercase tracking-[0.2em] text-white">
               <button onClick={() => onOpenLegal('reco')} className="hover:text-luxury-gold transition-colors text-left">RECO Compliant</button>
               <button onClick={() => onOpenLegal('orea')} className="hover:text-luxury-gold transition-colors text-left">OREA Member</button>
               <button onClick={() => onOpenLegal('crea')} className="hover:text-luxury-gold transition-colors text-left">CREA Verified</button>
@@ -699,8 +699,8 @@ const Footer = ({ onOpenLegal, onOpenRequest }: { onOpenLegal: (type: string) =>
           </div>
           
           <div className="md:col-span-4 space-y-6">
-            <h6 className="text-[10px] uppercase tracking-[0.4em] text-luxury-gold font-bold font-serif">Legal</h6>
-            <div className="grid grid-cols-2 gap-y-4 gap-x-8 text-[10px] uppercase tracking-[0.2em] text-white/40">
+            <h6 className="text-sm uppercase tracking-[0.4em] text-white font-bold font-serif">Legal</h6>
+            <div className="grid grid-cols-2 gap-y-4 gap-x-8 text-xs uppercase tracking-[0.2em] text-white">
               <button onClick={() => onOpenLegal('privacy')} className="hover:text-luxury-gold transition-colors text-left">Privacy Policy</button>
               <button onClick={() => onOpenLegal('terms')} className="hover:text-luxury-gold transition-colors text-left">Terms of Use</button>
               <button onClick={() => onOpenLegal('cookies')} className="hover:text-luxury-gold transition-colors text-left">Cookie Policy</button>
@@ -710,23 +710,23 @@ const Footer = ({ onOpenLegal, onOpenRequest }: { onOpenLegal: (type: string) =>
           </div>
 
           <div className="md:col-span-4 space-y-6 md:text-right">
-            <h6 className="text-[10px] uppercase tracking-[0.4em] text-luxury-gold font-bold font-serif">Headquarters</h6>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-white/40 leading-loose">
+            <h6 className="text-sm uppercase tracking-[0.4em] text-white font-bold font-serif">Headquarters</h6>
+            <p className="text-xs uppercase tracking-[0.2em] text-white leading-loose">
               100 Yorkville Avenue, Suite 200<br />
               Toronto, Ontario M5R 1B9<br />
-              <span className="text-luxury-gold font-bold">By Appointment Only</span>
+              <span className="text-white font-bold">By Appointment Only</span>
             </p>
           </div>
         </div>
 
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-[10px] uppercase tracking-[0.2em] text-white/30 text-center md:text-left font-medium">
+          <div className="text-xs uppercase tracking-[0.2em] text-white/60 text-center md:text-left font-medium">
             © 2026 Argus Intelligence. All Rights Reserved. <br className="md:hidden" />
             Toronto's Premier Real Estate Neural Network.
           </div>
           <div className="flex items-center gap-6">
-            <div className="h-[1px] w-12 bg-luxury-gold/20"></div>
-            <div className="text-[11px] uppercase tracking-[0.5em] text-luxury-gold italic font-serif font-bold">
+            <div className="h-[1px] w-12 bg-white/20"></div>
+            <div className="text-sm uppercase tracking-[0.5em] text-white italic font-serif font-bold">
               Discretion is our heritage.
             </div>
             <div className="h-[1px] w-12 bg-luxury-gold/20"></div>
