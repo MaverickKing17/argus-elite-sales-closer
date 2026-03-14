@@ -43,16 +43,18 @@ const Navbar = ({ onOpenRequest }: { onOpenRequest: () => void }) => (
     <div className="flex items-center gap-4">
       <a 
         href="/dashboard" 
-        className="hidden md:block text-[10px] uppercase tracking-widest font-bold hover:text-luxury-gold transition-colors px-4"
+        className="hidden md:block text-[10px] uppercase tracking-[0.2em] font-bold hover:text-luxury-gold transition-colors px-4"
       >
         Broker Login
       </a>
-      <button 
+      <motion.button 
+        whileHover={{ scale: 1.02, backgroundColor: 'var(--luxury-gold)', color: 'var(--luxury-ink)' }}
+        whileTap={{ scale: 0.98 }}
         onClick={onOpenRequest}
-        className="px-8 py-3 bg-luxury-ink text-luxury-bg rounded-full text-[10px] uppercase tracking-widest hover:bg-luxury-gold transition-all font-bold shadow-lg"
+        className="px-8 py-3 bg-luxury-ink text-luxury-bg rounded-full text-[10px] uppercase tracking-[0.2em] transition-all font-bold shadow-xl"
       >
         Request Access
-      </button>
+      </motion.button>
     </div>
   </nav>
 );
@@ -67,18 +69,20 @@ const Hero = ({ onOpenRequest }: { onOpenRequest: () => void }) => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 1 }}
-      className="relative min-h-screen flex flex-col items-center justify-center px-6 py-32"
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 py-32 overflow-hidden"
     >
       <motion.div 
         style={{ y: y1 }}
-        className="absolute inset-0 z-0 opacity-10"
+        className="absolute inset-0 z-0"
       >
         <img 
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000" 
-          alt="Luxury Toronto Estate" 
+          src="https://i.ibb.co/LzTK50Hh/wan2-5-t2i-preview-a-Prompt-A-profession.png" 
+          alt="Elite Luxury Professional" 
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
+        {/* Minimalist gradient overlay for maximum image visibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-luxury-bg/30 via-transparent to-luxury-bg/80"></div>
       </motion.div>
       
       <div className="relative z-10 max-w-5xl text-center">
@@ -87,19 +91,19 @@ const Hero = ({ onOpenRequest }: { onOpenRequest: () => void }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xs uppercase tracking-[0.4em] text-luxury-accent mb-6 block font-semibold"
+            className="text-xs uppercase tracking-[0.5em] text-luxury-gold mb-6 block font-bold"
           >
-            The Silent Closer for Toronto Luxury
+            The Multi-Million Dollar Pipeline Engine
           </motion.span>
           
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="text-6xl md:text-8xl font-serif leading-[0.9] mb-10 tracking-tight text-luxury-ink"
+            className="text-5xl md:text-8xl font-serif leading-[0.95] mb-10 tracking-tight text-luxury-ink drop-shadow-[0_2px_10px_rgba(255,255,255,0.8)]"
           >
-            Qualify $100K+ <br />
-            <span className="italic">Commissions</span> While You Sleep.
+            Stop Chasing Leads. <br />
+            <span className="italic">Scale Your Legacy.</span>
           </motion.h1>
           
           {/* Ambient AI Search Bar */}
@@ -109,22 +113,24 @@ const Hero = ({ onOpenRequest }: { onOpenRequest: () => void }) => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="max-w-2xl w-full mx-auto mb-12 relative group"
           >
-            <div className="absolute inset-0 bg-luxury-gold/20 blur-2xl rounded-full opacity-0 group-focus-within:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative flex items-center bg-white border border-luxury-ink/10 rounded-full p-2 shadow-sm hover:shadow-md transition-shadow focus-within:ring-2 focus-within:ring-luxury-gold/30">
-              <div className="pl-6 text-luxury-accent">
+            <div className="absolute inset-0 bg-luxury-gold/30 blur-3xl rounded-full opacity-0 group-focus-within:opacity-100 transition-opacity duration-700"></div>
+            <div className="relative flex items-center bg-white/90 backdrop-blur-md border border-luxury-ink/10 rounded-full p-2 shadow-2xl hover:shadow-luxury-gold/20 transition-all focus-within:ring-2 focus-within:ring-luxury-gold/40">
+              <div className="pl-6 text-luxury-gold">
                 <MessageSquareText size={20} />
               </div>
               <input 
                 type="text" 
-                placeholder="How can Argus qualify your next Yorkville lead?" 
-                className="w-full bg-transparent px-4 py-4 text-sm md:text-base focus:outline-none text-luxury-ink placeholder:text-luxury-ink/40"
+                placeholder="Qualify your next $5M+ Bridle Path listing..." 
+                className="w-full bg-transparent px-4 py-4 text-sm md:text-base focus:outline-none text-luxury-ink placeholder:text-luxury-ink/50 font-medium"
               />
-              <button 
+              <motion.button 
+                whileHover={{ scale: 1.02, backgroundColor: 'var(--color-luxury-gold)', color: '#fff' }}
+                whileTap={{ scale: 0.98 }}
                 onClick={onOpenRequest}
-                className="bg-luxury-ink text-luxury-bg px-8 py-4 rounded-full text-xs uppercase tracking-widest hover:bg-luxury-gold transition-colors font-bold min-h-[48px]"
+                className="bg-luxury-ink text-luxury-bg px-10 py-4 rounded-full text-xs uppercase tracking-[0.2em] transition-all font-bold min-h-[52px] shadow-lg"
               >
                 Ask Argus
-              </button>
+              </motion.button>
             </div>
           </motion.div>
 
@@ -132,10 +138,10 @@ const Hero = ({ onOpenRequest }: { onOpenRequest: () => void }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-lg md:text-xl font-light max-w-2xl mx-auto mb-8 text-luxury-ink/80 leading-relaxed"
+            className="text-lg md:text-xl font-medium max-w-2xl mx-auto mb-12 text-luxury-ink leading-relaxed"
           >
-            Argus is the first AI sales concierge designed exclusively for Toronto's elite brokerages. 
-            Discreet, intelligent, and verified by 20 years of local market data.
+            Argus is the elite AI sales concierge that qualifies $100K+ commissions while you focus on the handshake. 
+            Built for Toronto's top 1%, by the city's most advanced neural network.
           </motion.p>
           
           <motion.div 
@@ -144,35 +150,39 @@ const Hero = ({ onOpenRequest }: { onOpenRequest: () => void }) => {
             transition={{ duration: 0.8, delay: 1 }}
             className="flex flex-col md:flex-row justify-center items-center gap-6"
           >
-            <button 
+            <motion.button 
+              whileHover={{ scale: 1.05, boxShadow: "0 25px 50px -12px rgba(184, 134, 11, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
               onClick={onOpenRequest}
-              className="px-10 py-4 bg-luxury-ink text-luxury-bg rounded-full text-xs uppercase tracking-widest hover:bg-luxury-gold transition-colors font-bold min-h-[48px]"
+              className="px-12 py-5 bg-luxury-ink text-luxury-bg rounded-full text-xs uppercase tracking-[0.3em] hover:bg-luxury-gold hover:text-white transition-all duration-500 font-bold min-h-[60px] shadow-2xl"
             >
-              Request Access
-            </button>
-            <a 
+              Request Credentials
+            </motion.button>
+            <motion.a 
+              whileHover={{ scale: 1.05, borderColor: "rgba(0,0,0,0.8)", backgroundColor: "rgba(255,255,255,0.1)" }}
+              whileTap={{ scale: 0.95 }}
               href="/demo"
-              className="px-10 py-4 border border-luxury-ink/20 text-luxury-ink rounded-full text-xs uppercase tracking-widest hover:bg-luxury-ink hover:text-luxury-bg transition-all font-bold min-h-[48px] flex items-center"
+              className="px-12 py-5 border-2 border-luxury-ink/20 text-luxury-ink rounded-full text-xs uppercase tracking-[0.3em] hover:bg-luxury-ink hover:text-luxury-bg transition-all duration-500 font-bold min-h-[60px] flex items-center backdrop-blur-sm"
             >
-              View Live Demo
-            </a>
+              View Live Intelligence
+            </motion.a>
           </motion.div>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
-            className="mt-8"
+            className="mt-12"
           >
-            <span className="text-[10px] uppercase tracking-widest text-luxury-ink/40 flex items-center gap-2">
-              <ShieldCheck size={14} /> Toronto-Verified Reliability • Trusted by 500+ Luxury Brokers
+            <span className="text-[10px] uppercase tracking-[0.4em] text-luxury-ink/60 flex items-center gap-3 font-bold">
+              <ShieldCheck size={16} className="text-luxury-gold" /> SECURE TORONTO NETWORK • $2.4B IN QUALIFIED PIPELINE
             </span>
           </motion.div>
         </div>
       </div>
 
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-40">
-        <div className="w-[1px] h-12 bg-luxury-ink"></div>
-        <span className="text-[9px] uppercase tracking-[0.3em] text-luxury-ink">Scroll</span>
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-60">
+        <div className="w-[1px] h-16 bg-luxury-gold"></div>
+        <span className="text-[10px] uppercase tracking-[0.4em] text-luxury-ink font-bold">Market Intelligence</span>
       </div>
     </motion.section>
   );
@@ -187,15 +197,15 @@ const ProofSection = () => (
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="md:col-span-2 p-12 glass-card rounded-3xl flex flex-col justify-between min-h-[300px]"
+          className="md:col-span-2 p-12 glass-card rounded-3xl flex flex-col justify-between min-h-[300px] border-l-4 border-l-luxury-gold"
         >
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-luxury-gold/10 text-luxury-gold text-[10px] uppercase tracking-widest font-bold mb-6">
-              <TrendingUp size={12} /> Lead Conversion Velocity
+              <TrendingUp size={12} /> Revenue Velocity Engine
             </div>
-            <h3 className="text-4xl font-serif text-luxury-ink mb-4">Accelerating the path to closing by 4.2x.</h3>
+            <h3 className="text-4xl font-serif text-luxury-ink mb-4 leading-tight">Turn Your Database Into a <br />$10M+ Annual Revenue Engine.</h3>
           </div>
-          <p className="text-luxury-ink/60 max-w-md">Our neural network identifies intent signals that human agents miss, moving leads from inquiry to viewing in record time.</p>
+          <p className="text-luxury-ink/70 max-w-md font-medium">Argus identifies the high-net-worth liquidity shifts in your database before your competitors even know they're active. Stop losing $100K commissions to slow response times.</p>
         </motion.div>
 
         {/* Bento Grid Item 2 */}
@@ -278,26 +288,26 @@ const Intelligence = () => (
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h2 className="text-5xl font-serif mb-8 leading-tight text-luxury-ink">
-            Toronto Market <br />
-            <span className="italic">Neural Intelligence.</span>
+            Monetize the <br />
+            <span className="italic text-luxury-gold underline decoration-luxury-gold/20 underline-offset-8">Shadow Inventory.</span>
           </h2>
-          <p className="text-luxury-ink/80 mb-8 leading-relaxed">
-            Argus processes over 200GB of proprietary Toronto real estate data daily. We don't just track the MLS; we monitor off-market liquidity shifts in the Bridle Path, Rosedale's heritage scarcity index, and the rapid appreciation of Yorkville's vertical estates.
+          <p className="text-luxury-ink/80 mb-8 leading-relaxed font-medium">
+            The real money in Toronto luxury isn't on the MLS—it's in the off-market shifts. Argus monitors liquidity in the Bridle Path, Rosedale's heritage scarcity, and Yorkville's vertical estate velocity to find your next $20M listing before it's even a thought.
           </p>
           <div className="grid grid-cols-2 gap-8 mb-12">
             <div>
-              <p className="text-2xl font-serif text-luxury-gold mb-1">12.4%</p>
-              <p className="text-[10px] uppercase tracking-widest opacity-60">Off-Market Bridle Path Growth</p>
+              <p className="text-3xl font-serif text-luxury-gold mb-1 font-bold">$2.4B</p>
+              <p className="text-[10px] uppercase tracking-widest opacity-80 font-bold">Qualified Pipeline Identified</p>
             </div>
             <div>
-              <p className="text-2xl font-serif text-luxury-gold mb-1">3.1 Days</p>
-              <p className="text-[10px] uppercase tracking-widest opacity-60">Avg. Qualification Speed</p>
+              <p className="text-3xl font-serif text-luxury-gold mb-1 font-bold">4.2x</p>
+              <p className="text-[10px] uppercase tracking-widest opacity-80 font-bold">GCI Growth Multiplier</p>
             </div>
           </div>
           <ul className="space-y-4">
             {[
-              "Bridle Path Multi-Generational Estate Mapping",
-              "Rosedale Heritage Scarcity Predictive Modeling",
+              "Bridle Path Multi-Generational Liquidity Mapping",
+              "Rosedale Heritage Scarcity Predictive Revenue Models",
               "Forest Hill Modern Architectural Demand Index",
               "Yorkville High-Intent Lead Velocity Tracking"
             ].map((item, i) => (
@@ -307,7 +317,7 @@ const Intelligence = () => (
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 * i }}
-                className="flex items-center gap-3 text-sm font-medium text-luxury-ink"
+                className="flex items-center gap-3 text-sm font-bold text-luxury-ink"
               >
                 <CheckCircle2 size={16} className="text-luxury-gold" />
                 {item}
@@ -779,49 +789,126 @@ const LegalModal = ({ type, onClose }: { type: string | null, onClose: () => voi
 };
 
 const RequestModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) => {
+  const [submitted, setSubmitted] = useState(false);
+  
   if (!isOpen) return null;
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+    // In a real app, you'd send data to a backend here
+  };
 
   return (
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm"
-      onClick={onClose}
+      className="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/80 backdrop-blur-md"
+      onClick={() => {
+        onClose();
+        setTimeout(() => setSubmitted(false), 300);
+      }}
     >
       <motion.div 
-        initial={{ scale: 0.9, y: 20 }}
-        animate={{ scale: 1, y: 0 }}
-        className="bg-luxury-bg w-full max-w-md rounded-3xl p-10 shadow-2xl relative overflow-hidden"
+        initial={{ scale: 0.9, y: 40, opacity: 0 }}
+        animate={{ scale: 1, y: 0, opacity: 1 }}
+        className="bg-luxury-bg w-full max-w-lg rounded-[2rem] p-12 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] relative overflow-hidden border border-luxury-ink/5"
         onClick={e => e.stopPropagation()}
       >
-        <button onClick={onClose} className="absolute top-6 right-6 text-luxury-ink/40 hover:text-luxury-ink transition-colors">
-          <X size={24} />
+        {/* Decorative background element */}
+        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-luxury-gold to-transparent opacity-50"></div>
+        
+        <button 
+          onClick={() => {
+            onClose();
+            setTimeout(() => setSubmitted(false), 300);
+          }} 
+          className="absolute top-8 right-8 text-luxury-ink/30 hover:text-luxury-ink transition-all hover:rotate-90 duration-300"
+        >
+          <X size={28} />
         </button>
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 rounded-full bg-luxury-gold/10 flex items-center justify-center text-luxury-gold mx-auto mb-4">
-            <ShieldCheck size={32} />
-          </div>
-          <h2 className="text-3xl font-serif text-luxury-ink mb-2">Request Access</h2>
-          <p className="text-sm text-luxury-ink/60">Join the exclusive network of Toronto's elite brokerages.</p>
-        </div>
-        <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); onClose(); alert('Request sent. Our concierge will contact you shortly.'); }}>
-          <div>
-            <label className="block text-[10px] uppercase tracking-widest text-luxury-ink/40 mb-2 font-bold">Full Name</label>
-            <input type="text" required className="w-full bg-luxury-ink/5 border border-luxury-ink/10 rounded-full px-6 py-3 text-sm focus:outline-none focus:border-luxury-gold transition-all" placeholder="John Doe" />
-          </div>
-          <div>
-            <label className="block text-[10px] uppercase tracking-widest text-luxury-ink/40 mb-2 font-bold">Brokerage Name</label>
-            <input type="text" required className="w-full bg-luxury-ink/5 border border-luxury-ink/10 rounded-full px-6 py-3 text-sm focus:outline-none focus:border-luxury-gold transition-all" placeholder="Luxury Toronto Realty" />
-          </div>
-          <div>
-            <label className="block text-[10px] uppercase tracking-widest text-luxury-ink/40 mb-2 font-bold">Professional Email</label>
-            <input type="email" required className="w-full bg-luxury-ink/5 border border-luxury-ink/10 rounded-full px-6 py-3 text-sm focus:outline-none focus:border-luxury-gold transition-all" placeholder="john@brokerage.com" />
-          </div>
-          <button type="submit" className="w-full py-4 bg-luxury-ink text-luxury-bg rounded-full text-xs uppercase tracking-widest hover:bg-luxury-gold transition-colors font-bold mt-4">
-            Submit Application
-          </button>
-        </form>
+
+        {!submitted ? (
+          <>
+            <div className="text-center mb-12">
+              <div className="w-20 h-20 rounded-full bg-luxury-gold/5 flex items-center justify-center text-luxury-gold mx-auto mb-6 border border-luxury-gold/10">
+                <ShieldCheck size={40} strokeWidth={1.5} />
+              </div>
+              <h2 className="text-4xl font-serif text-luxury-ink mb-4 tracking-tight">Request Private Access</h2>
+              <p className="text-sm text-luxury-ink/50 max-w-xs mx-auto leading-relaxed">
+                Entry to the Argus network is strictly vetted to maintain the integrity of our high-net-worth intelligence.
+              </p>
+            </div>
+
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div className="space-y-2">
+                <label className="block text-[10px] uppercase tracking-[0.2em] text-luxury-ink/60 font-bold ml-4">Full Legal Name</label>
+                <input 
+                  type="text" 
+                  required 
+                  className="w-full bg-white border border-luxury-ink/10 rounded-full px-8 py-4 text-sm focus:outline-none focus:border-luxury-gold focus:ring-4 focus:ring-luxury-gold/5 transition-all placeholder:text-luxury-ink/20" 
+                  placeholder="e.g. Alexander Sterling" 
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-[10px] uppercase tracking-[0.2em] text-luxury-ink/60 font-bold ml-4">Brokerage / Institution</label>
+                <input 
+                  type="text" 
+                  required 
+                  className="w-full bg-white border border-luxury-ink/10 rounded-full px-8 py-4 text-sm focus:outline-none focus:border-luxury-gold focus:ring-4 focus:ring-luxury-gold/5 transition-all placeholder:text-luxury-ink/20" 
+                  placeholder="e.g. Sotheby's International Realty" 
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-[10px] uppercase tracking-[0.2em] text-luxury-ink/60 font-bold ml-4">Professional Email</label>
+                <input 
+                  type="email" 
+                  required 
+                  className="w-full bg-white border border-luxury-ink/10 rounded-full px-8 py-4 text-sm focus:outline-none focus:border-luxury-gold focus:ring-4 focus:ring-luxury-gold/5 transition-all placeholder:text-luxury-ink/20" 
+                  placeholder="alexander@brokerage.com" 
+                />
+              </div>
+              
+              <div className="pt-4">
+                <button 
+                  type="submit" 
+                  className="w-full py-5 bg-luxury-ink text-luxury-bg rounded-full text-xs uppercase tracking-[0.3em] hover:bg-luxury-gold hover:text-luxury-ink transition-all duration-500 font-bold shadow-xl hover:shadow-luxury-gold/20 flex items-center justify-center gap-3 group"
+                >
+                  Apply for Credentials
+                  <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+              
+              <p className="text-[9px] text-center text-luxury-ink/30 uppercase tracking-widest">
+                By submitting, you agree to our non-disclosure protocols.
+              </p>
+            </form>
+          </>
+        ) : (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-center py-12"
+          >
+            <div className="w-24 h-24 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500 mx-auto mb-8 border border-emerald-100">
+              <CheckCircle2 size={48} strokeWidth={1.5} />
+            </div>
+            <h2 className="text-4xl font-serif text-luxury-ink mb-4">Application Received</h2>
+            <p className="text-sm text-luxury-ink/60 leading-relaxed max-w-xs mx-auto mb-10">
+              Your credentials are being verified by our intelligence partners. A concierge will contact you via your professional email within 24 hours.
+            </p>
+            <button 
+              onClick={() => {
+                onClose();
+                setTimeout(() => setSubmitted(false), 300);
+              }}
+              className="px-12 py-4 border border-luxury-ink/10 rounded-full text-xs uppercase tracking-widest hover:bg-luxury-ink hover:text-luxury-bg transition-all font-bold"
+            >
+              Return to Briefing
+            </button>
+          </motion.div>
+        )}
       </motion.div>
     </motion.div>
   );
