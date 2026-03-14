@@ -565,92 +565,132 @@ const FAQ = () => {
   );
 };
 
-const Footer = ({ onOpenLegal }: { onOpenLegal: (type: string) => void }) => (
-  <footer className="py-32 px-6 bg-luxury-ink text-white border-t border-luxury-bg/10">
+const Footer = ({ onOpenLegal, onOpenRequest }: { onOpenLegal: (type: string) => void, onOpenRequest: () => void }) => (
+  <footer className="relative py-32 px-6 bg-luxury-ink text-white overflow-hidden">
+    {/* Atmospheric Background */}
+    <div className="absolute inset-0 z-0 opacity-20">
+      <img 
+        src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=2000" 
+        alt="Luxury Interior" 
+        className="w-full h-full object-cover grayscale"
+        referrerPolicy="no-referrer"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-luxury-ink via-luxury-ink/80 to-transparent"></div>
+    </div>
+
+    <div className="relative z-10 max-w-7xl mx-auto border-b border-white/10 pb-16 mb-20">
+      <div className="flex flex-wrap justify-center md:justify-between items-center gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
+        <span className="text-[10px] uppercase tracking-[0.5em] font-bold">Sotheby's</span>
+        <span className="text-[10px] uppercase tracking-[0.5em] font-bold">Engel & Völkers</span>
+        <span className="text-[10px] uppercase tracking-[0.5em] font-bold">Chestnut Park</span>
+        <span className="text-[10px] uppercase tracking-[0.5em] font-bold">Harvey Kalles</span>
+        <span className="text-[10px] uppercase tracking-[0.5em] font-bold">Royal LePage</span>
+      </div>
+    </div>
+
     <motion.div 
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="max-w-7xl mx-auto"
+      className="relative z-10 max-w-7xl mx-auto"
     >
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-24">
-        <div className="md:col-span-4">
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-12 h-12 border border-luxury-gold flex items-center justify-center text-luxury-gold font-serif text-2xl">A</div>
-            <div className="text-3xl font-serif tracking-widest uppercase font-bold text-white">Argus</div>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 mb-32">
+        {/* Brand Section */}
+        <div className="lg:col-span-5 space-y-10">
+          <div className="space-y-6">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 border-2 border-luxury-gold flex items-center justify-center text-luxury-gold font-serif text-3xl">A</div>
+              <div className="text-4xl font-serif tracking-[0.2em] uppercase font-bold text-white">Argus</div>
+            </div>
+            <p className="text-lg text-white/70 leading-relaxed max-w-md font-light">
+              The definitive AI concierge for Toronto's most prestigious real estate brokerages. 
+              Engineering discretion, intelligence, and legacy since 2006.
+            </p>
+            <div className="pt-2">
+              <span className="text-[10px] uppercase tracking-[0.6em] text-luxury-gold/40 font-bold">Built for the Top 1%</span>
+            </div>
           </div>
-          <p className="text-sm text-white/70 leading-relaxed mb-10 max-w-sm">
-            The definitive AI concierge for Toronto's most prestigious real estate brokerages. 
-            Discretion, intelligence, and legacy since 2006.
-          </p>
-          <div className="flex gap-4">
+          
+          <div className="flex gap-6">
             {[Instagram, Linkedin, Twitter].map((Icon, idx) => (
-              <a key={idx} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-luxury-gold hover:border-luxury-gold hover:text-luxury-ink transition-all duration-500 group">
-                <Icon size={18} className="group-hover:scale-110 transition-transform" />
+              <a key={idx} href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-luxury-gold hover:border-luxury-gold hover:text-luxury-ink transition-all duration-500 group">
+                <Icon size={20} className="group-hover:scale-110 transition-transform" />
               </a>
             ))}
           </div>
-        </div>
 
-        <div className="md:col-span-2">
-          <h5 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold mb-8 font-bold font-serif">Intelligence</h5>
-          <ul className="space-y-4 text-sm text-white/80">
-            <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors">Market Pulse</a></li>
-            <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors">Valuation AI</a></li>
-            <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors">Heritage Analytics</a></li>
-            <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors">Velocity Tracking</a></li>
-            <li><a href="/dashboard" className="text-luxury-gold font-bold hover:underline">Broker Dashboard</a></li>
-          </ul>
-        </div>
-
-        <div className="md:col-span-2">
-          <h5 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold mb-8 font-bold font-serif">Brokerage Hubs</h5>
-          <ul className="space-y-4 text-sm text-white/80">
-            <li className="flex items-center gap-2 hover:text-luxury-gold transition-colors cursor-default"><MapPin size={12} /> Yorkville</li>
-            <li className="flex items-center gap-2 hover:text-luxury-gold transition-colors cursor-default"><MapPin size={12} /> Bridle Path</li>
-            <li className="flex items-center gap-2 hover:text-luxury-gold transition-colors cursor-default"><MapPin size={12} /> Forest Hill</li>
-            <li className="flex items-center gap-2 hover:text-luxury-gold transition-colors cursor-default"><MapPin size={12} /> Rosedale</li>
-          </ul>
-        </div>
-
-        <div className="md:col-span-4">
-          <div className="bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl backdrop-blur-sm">
-            <h5 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold mb-6 font-bold font-serif">The Argus Report</h5>
-            <p className="text-sm text-white/80 mb-8 leading-relaxed">
-              Subscribe to our quarterly intelligence report on Toronto's HNW behavioral shifts.
-            </p>
-            <form 
-              action="https://formspree.io/f/xjgaoqgk" 
-              method="POST"
-              className="relative group"
+          <div className="pt-10">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={onOpenRequest}
+              className="px-10 py-4 bg-luxury-gold text-luxury-ink rounded-full text-xs uppercase tracking-[0.3em] font-bold shadow-2xl hover:bg-white transition-colors"
             >
-              <input 
-                type="email" 
-                name="email"
-                required
-                placeholder="Private Email Address" 
-                className="w-full bg-white/10 border border-white/10 rounded-full px-6 py-4 text-sm focus:outline-none focus:border-luxury-gold transition-all placeholder:text-white/30 text-white"
-              />
-              <button 
-                type="submit"
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-luxury-gold text-luxury-ink rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg"
+              Request Credentials
+            </motion.button>
+          </div>
+        </div>
+
+        {/* Links Grid */}
+        <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="space-y-8">
+            <h5 className="text-[10px] uppercase tracking-[0.4em] text-luxury-gold font-bold font-serif border-b border-luxury-gold/20 pb-4">Intelligence</h5>
+            <ul className="space-y-5 text-sm text-white/60">
+              <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors block">Market Pulse</a></li>
+              <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors block">Valuation AI</a></li>
+              <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors block">Heritage Analytics</a></li>
+              <li><a href="#intelligence" className="hover:text-luxury-gold transition-colors block">Velocity Tracking</a></li>
+              <li><a href="/dashboard" className="text-luxury-gold font-bold hover:underline block">Broker Dashboard</a></li>
+            </ul>
+          </div>
+
+          <div className="space-y-8">
+            <h5 className="text-[10px] uppercase tracking-[0.4em] text-luxury-gold font-bold font-serif border-b border-luxury-gold/20 pb-4">Brokerage Hubs</h5>
+            <ul className="space-y-5 text-sm text-white/60">
+              <li className="flex items-center gap-3 hover:text-luxury-gold transition-colors cursor-default"><MapPin size={14} className="text-luxury-gold" /> Yorkville</li>
+              <li className="flex items-center gap-3 hover:text-luxury-gold transition-colors cursor-default"><MapPin size={14} className="text-luxury-gold" /> Bridle Path</li>
+              <li className="flex items-center gap-3 hover:text-luxury-gold transition-colors cursor-default"><MapPin size={14} className="text-luxury-gold" /> Forest Hill</li>
+              <li className="flex items-center gap-3 hover:text-luxury-gold transition-colors cursor-default"><MapPin size={14} className="text-luxury-gold" /> Rosedale</li>
+            </ul>
+          </div>
+
+          <div className="space-y-8">
+            <h5 className="text-[10px] uppercase tracking-[0.4em] text-luxury-gold font-bold font-serif border-b border-luxury-gold/20 pb-4">The Report</h5>
+            <div className="space-y-6">
+              <p className="text-xs text-white/50 leading-relaxed">
+                Subscribe to our quarterly intelligence report on Toronto's HNW behavioral shifts.
+              </p>
+              <form 
+                action="https://formspree.io/f/xjgaoqgk" 
+                method="POST"
+                className="relative group"
               >
-                <ChevronRight size={18} />
-              </button>
-            </form>
-            <p className="text-[9px] uppercase tracking-widest text-white/30 mt-6 text-center">
-              Encrypted & Confidential
-            </p>
+                <input 
+                  type="email" 
+                  name="email"
+                  required
+                  placeholder="Private Email" 
+                  className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-xs focus:outline-none focus:border-luxury-gold transition-all placeholder:text-white/20 text-white"
+                />
+                <button 
+                  type="submit"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-luxury-gold text-luxury-ink rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg"
+                >
+                  <ChevronRight size={18} />
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="pt-16 border-t border-white/10 space-y-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
-          <div className="space-y-6">
-            <h6 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold font-bold font-serif">Compliance</h6>
-            <div className="grid grid-cols-2 gap-4 text-[9px] uppercase tracking-[0.2em] text-white/60">
+      {/* Compliance & Legal Footer */}
+      <div className="pt-20 border-t border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start mb-20">
+          <div className="md:col-span-4 space-y-6">
+            <h6 className="text-[10px] uppercase tracking-[0.4em] text-luxury-gold font-bold font-serif">Compliance</h6>
+            <div className="grid grid-cols-2 gap-y-4 gap-x-8 text-[10px] uppercase tracking-[0.2em] text-white/40">
               <button onClick={() => onOpenLegal('reco')} className="hover:text-luxury-gold transition-colors text-left">RECO Compliant</button>
               <button onClick={() => onOpenLegal('orea')} className="hover:text-luxury-gold transition-colors text-left">OREA Member</button>
               <button onClick={() => onOpenLegal('crea')} className="hover:text-luxury-gold transition-colors text-left">CREA Verified</button>
@@ -658,9 +698,9 @@ const Footer = ({ onOpenLegal }: { onOpenLegal: (type: string) => void }) => (
             </div>
           </div>
           
-          <div className="space-y-6">
-            <h6 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold font-bold font-serif">Legal</h6>
-            <div className="grid grid-cols-2 gap-4 text-[9px] uppercase tracking-[0.2em] text-white/60">
+          <div className="md:col-span-4 space-y-6">
+            <h6 className="text-[10px] uppercase tracking-[0.4em] text-luxury-gold font-bold font-serif">Legal</h6>
+            <div className="grid grid-cols-2 gap-y-4 gap-x-8 text-[10px] uppercase tracking-[0.2em] text-white/40">
               <button onClick={() => onOpenLegal('privacy')} className="hover:text-luxury-gold transition-colors text-left">Privacy Policy</button>
               <button onClick={() => onOpenLegal('terms')} className="hover:text-luxury-gold transition-colors text-left">Terms of Use</button>
               <button onClick={() => onOpenLegal('cookies')} className="hover:text-luxury-gold transition-colors text-left">Cookie Policy</button>
@@ -669,27 +709,27 @@ const Footer = ({ onOpenLegal }: { onOpenLegal: (type: string) => void }) => (
             </div>
           </div>
 
-          <div className="space-y-6 md:text-right">
-            <h6 className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold font-bold font-serif">Headquarters</h6>
-            <p className="text-[9px] uppercase tracking-[0.2em] text-white/60 leading-loose">
+          <div className="md:col-span-4 space-y-6 md:text-right">
+            <h6 className="text-[10px] uppercase tracking-[0.4em] text-luxury-gold font-bold font-serif">Headquarters</h6>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-white/40 leading-loose">
               100 Yorkville Avenue, Suite 200<br />
               Toronto, Ontario M5R 1B9<br />
-              <span className="text-luxury-gold">By Appointment Only</span>
+              <span className="text-luxury-gold font-bold">By Appointment Only</span>
             </p>
           </div>
         </div>
 
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-[9px] uppercase tracking-[0.2em] text-white/40 text-center md:text-left">
+          <div className="text-[10px] uppercase tracking-[0.2em] text-white/30 text-center md:text-left font-medium">
             © 2026 Argus Intelligence. All Rights Reserved. <br className="md:hidden" />
             Toronto's Premier Real Estate Neural Network.
           </div>
-          <div className="flex items-center gap-4">
-            <div className="h-[1px] w-8 bg-luxury-gold/30"></div>
-            <div className="text-[10px] uppercase tracking-[0.4em] text-luxury-gold italic font-serif">
+          <div className="flex items-center gap-6">
+            <div className="h-[1px] w-12 bg-luxury-gold/20"></div>
+            <div className="text-[11px] uppercase tracking-[0.5em] text-luxury-gold italic font-serif font-bold">
               Discretion is our heritage.
             </div>
-            <div className="h-[1px] w-8 bg-luxury-gold/30"></div>
+            <div className="h-[1px] w-12 bg-luxury-gold/20"></div>
           </div>
         </div>
       </div>
@@ -949,14 +989,35 @@ const ChatWidget = () => {
   return (
     <div className="fixed bottom-8 right-8 z-[100]">
       <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        animate={!isOpen ? {
+          y: [0, -10, 0],
+          boxShadow: [
+            "0 10px 25px -5px rgba(0, 0, 0, 0.3)",
+            "0 20px 35px -5px rgba(184, 134, 11, 0.4)",
+            "0 10px 25px -5px rgba(0, 0, 0, 0.3)"
+          ]
+        } : { y: 0 }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-16 h-16 bg-luxury-gold text-black rounded-full shadow-2xl flex items-center justify-center group relative overflow-hidden"
+        className="w-16 h-16 bg-luxury-gold text-black rounded-full shadow-2xl flex items-center justify-center group relative overflow-hidden border border-white/20"
       >
+        {/* Subtle inner glow effect */}
+        <motion.div 
+          animate={{ opacity: [0.2, 0.5, 0.2] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute inset-0 bg-white rounded-full"
+        />
+        
         <motion.div
           animate={{ rotate: isOpen ? 90 : 0 }}
           transition={{ duration: 0.4 }}
+          className="relative z-10"
         >
           {isOpen ? <X size={24} /> : <MessageSquareText size={24} />}
         </motion.div>
@@ -1069,7 +1130,7 @@ export default function App() {
         <TrustSection />
         <FAQ />
       </main>
-      <Footer onOpenLegal={setLegalType} />
+      <Footer onOpenLegal={setLegalType} onOpenRequest={() => setIsRequestOpen(true)} />
       <ChatWidget />
       <LegalModal type={legalType} onClose={() => setLegalType(null)} />
       <RequestModal isOpen={isRequestOpen} onClose={() => setIsRequestOpen(false)} />
